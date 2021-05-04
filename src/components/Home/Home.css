@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Chivo:ital,wght@1,300;1,400&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Chivo:wght@300&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
+
 
 .home__container {
     height: 100vh;
@@ -10,7 +12,7 @@
 .auth__buttons {
     position: fixed;
     bottom: 0;
-    right: 0;
+    right: 30px;
     display: flex;
     flex-direction: column;
     padding: 10px 10px;
@@ -52,7 +54,44 @@
     align-self: center;
 }
 
+.home__text-top {
+    width: 600px;
+    position: fixed;
+    right: 130px;
+    font-family: 'Nunito';
+    font-size: 50px;
+    font-style: italic;
+    color: #FA5D05;
+    display: flex;
+    flex-direction: column;
+}
 
+.top__line-one {
+    align-self: center;
+}
+
+.top__line-two {
+    align-self: flex-end;
+    position: fixed;
+    top: 100px;
+}
+
+.home__text-bottom {
+    position: fixed;
+    right: 50px;
+    bottom: 300px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 400px;
+    font-family: 'Arvo';
+    font-size: 40px;
+}
+
+.bottom__line-two {
+    display: flex;
+    align-self: center;
+}
 
 
 /* .home__doodle .doodle {
