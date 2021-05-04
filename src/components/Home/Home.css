@@ -12,7 +12,7 @@
 .auth__buttons {
     position: fixed;
     bottom: 0;
-    right: 30px;
+    right: 5vw;
     display: flex;
     flex-direction: column;
     padding: 10px 10px;
@@ -58,12 +58,13 @@
     width: 600px;
     position: fixed;
     right: 130px;
-    font-family: 'Nunito';
-    font-size: 50px;
+    font-family: 'Arvo';
+    font-size: 9vh;
     font-style: italic;
-    color: #FA5D05;
+    color: #2856ec;
     display: flex;
     flex-direction: column;
+    text-shadow: 3px -2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .top__line-one {
@@ -72,20 +73,20 @@
 
 .top__line-two {
     align-self: flex-end;
-    position: fixed;
-    top: 100px;
+    position: relative;
+    top: -50px;
 }
 
 .home__text-bottom {
     position: fixed;
-    right: 50px;
-    bottom: 300px;
+    right: 3vw;
+    bottom: 35vh;
     display: flex;
     align-items: center;
     flex-direction: column;
-    width: 400px;
+    width: 500px;
     font-family: 'Arvo';
-    font-size: 40px;
+    font-size: 5vh;
 }
 
 .bottom__line-two {
@@ -93,18 +94,29 @@
     align-self: center;
 }
 
-
-/* .home__doodle .doodle {
-    position: absolute;
-    top: -15vh;
+.home__doodle .doodle {
+    position: fixed;
+    animation: goUpDown 3s infinite;
     height: 100vh;
+    bottom: 30px;
+}
+
+@keyframes goUpDown {
+    0%, 100% {
+        transform: translateY(0);
+        transform: rotate(-20deg);
+    }
+    50% {
+        transform: translateY(-100px);
+        transform: rotate(-18deg);
+    }
 }
 
 .doodle-triangle {
-    position: absolute;
+    position: fixed;
     top: -10vh;
     left: 130px;
     height: 100vh;
     transform: rotate(20deg);
-    z-index: -1;
-} */
+    z-index: 0;
+}
