@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chivo:ital,wght@1,300;1,400&display=swap');
+
+.home__container {
+    height: 100vh;
+    width: 100vw;
+    background-color: #FDF074;
+}
+
+.auth__buttons {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 10px;
+    width: 400px;
+    height: 150px;
+}
+
+.buttons__one {
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttons__one > .k-primary {
+    height: 50px;
+    width: 150px;
+    border-radius: 10px;
+    font-family: 'Nunito';
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.buttons__two {
+    display: flex;
+    align-self: center;
+    margin-top: 20px;
+}
+
+.buttons__two > .k-button {
+    height: 50px;
+    width: 325px;
+    border-radius: 10px;
+    font-family: 'Nunito';
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.k-ripple-container {
+    padding: 10px 0;
+    align-self: center;
+}
+
+
+
+
+/* .home__doodle .doodle {
+    position: absolute;
+    top: -15vh;
+    height: 100vh;
+}
+
+.doodle-triangle {
+    position: absolute;
+    top: -10vh;
+    left: 130px;
+    height: 100vh;
+    transform: rotate(20deg);
+    z-index: -1;
+} */
