@@ -9,6 +9,20 @@ const Register = () => {
     const goBackHome = () => {
         history.push("/");
     }
+    const modalVariants = {
+        initial: {
+            y: "100vh",
+        },
+        animate: {
+            y: 0,
+            transition: { ease: "easeInOut", duration: 1}
+        },
+
+        exit: {
+            y: "200vh",
+            transition: { ease: "easeInOut", duration: 1}
+        }
+    }
 
     return (
         <div className="register__page">
@@ -24,15 +38,30 @@ const Register = () => {
                     </motion.svg>
                 </div>
             </div>
-            <div className="loving">
+            <motion.div
+                className="loving"
+                variants={modalVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+            >
                 <img src="assets/loving.png" alt=""/>
-            </div>
-            <div className="meditating">
+            </motion.div>
+            <motion.div 
+                variants={modalVariants}
+                exit="exit"
+                className="meditating">
                 <img src="assets/meditate.png" alt=""/>
-            </div>
-            <div className="register__modal">
+            </motion.div>
+            <motion.div 
+                className="register__modal"
+                variants={modalVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+            >
                 <AuthModal register={true}/>
-            </div>
+            </motion.div>
         </div>
     );
 }

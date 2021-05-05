@@ -9,12 +9,27 @@ const SignIn = () => {
     const goBackHome = () => {
         history.push("/");
     }
+    const modalVariants = {
+        initial: {
+            y: "100vh",
+        },
+        animate: {
+            y: 0,
+            transition: { ease: "easeInOut", duration: 1}
+        },
+
+        exit: {
+            y: "200vh",
+            transition: { ease: "easeInOut", duration: 1}
+        }
+    }
 
     return (
         <motion.div
-            initial={{ opacity: 0}}
-            animate={{ opacity: 1}}
-            exit={{ opacity: 0}}
+            variants={modalVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
         >
             <div className="signin__page">
                 <div className="dancing">
@@ -24,7 +39,7 @@ const SignIn = () => {
                 <div className="reading">
                     <img src="assets/reading-side.png" alt=""/>
                 </div>
-                <div className="back__arrow">
+                <motion.div className="back__arrow">
                     <div className="back__title">
                         <h3>Back to Home</h3>
                     </div>
@@ -35,7 +50,7 @@ const SignIn = () => {
                             <polygon class="arrow-bottom" points="37.6,64 0,36.1 5.1,32.8 37.6,56.8 70.4,32.8 75.5,36.1 "/>
                         </motion.svg>
                     </div>
-                </div>
+                </motion.div>
                 <div className="loving">
                     <img src="assets/loving.png" alt=""/>
                 </div>

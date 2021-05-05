@@ -96,20 +96,8 @@
 
 .home__doodle .doodle {
     position: fixed;
-    animation: goUpDown 3s infinite;
     height: 100vh;
     bottom: 30px;
-}
-
-@keyframes goUpDown {
-    0%, 100% {
-        transform: translateY(0);
-        transform: rotate(-20deg);
-    }
-    50% {
-        transform: translateY(-100px);
-        transform: rotate(-18deg);
-    }
 }
 
 .doodle-triangle {
