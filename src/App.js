@@ -1,16 +1,19 @@
 import './App.css';
 import '@progress/kendo-theme-material/dist/all.css';
-// import { bikeStations } from './data/bike-stations';
-// import { Grid, GridColumn } from '@progress/kendo-react-grid';
-// import { useState } from 'react';
-// import { process } from '@progress/kendo-data-query';
 import Home from './components/Home/Home';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import SignIn from './components/SignIn/SignIn';
+import Register from './components/Register/Register';
 
 function App() {
 
   return (
     <div className="app">
-      <Home />
+      <Router>
+        <Route exact path="/" component={Home} />
+        <Route path="/signIn" component={SignIn} />
+        <Route path="/register" component={Register} />
+      </Router>
     </div>
   );
 }

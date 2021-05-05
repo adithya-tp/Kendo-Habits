@@ -1,13 +1,17 @@
 import { Button } from '@progress/kendo-react-buttons';
-import { Dialog } from '@progress/kendo-react-dialogs';
 import { Form, Field, FormElement } from '@progress/kendo-react-form';
 import React from 'react';
 import { FormInput } from '../AuthModal/FormInput';
 import { emailValidator, passwordValidator } from '../AuthModal/validators';
+import { Card, CardHeader } from '@progress/kendo-react-layout';
+import './SignInModal.css';
 
-const SignInModal = ({ toggleMethod }) => {
+const SignInModal = () => {
     return (
-        <Dialog title="Sign In" onClose={toggleMethod}>
+        <Card>
+            <CardHeader>
+                Sign In
+            </CardHeader>
             <Form
                 onSubmit={() => {}}
                 render={(formRenderProps) => (
@@ -17,6 +21,7 @@ const SignInModal = ({ toggleMethod }) => {
                             name={'email'}
                             label={'Email'}
                             type={'email'}
+                            placeholder={'Enter your email...'}
                             component={FormInput}
                             validator={emailValidator}
                         />
@@ -25,18 +30,23 @@ const SignInModal = ({ toggleMethod }) => {
                             name={'password'}
                             label={'Password'}
                             type={'password'}
+                            placeholder={'Enter your password...'}
                             component={FormInput}
                             validator={passwordValidator}
                         />
                         <div className="k-form-buttons">
                             <Button
+                                className="auth-modal sign-in-modal"
                                 primary={true}
                                 type={'submit'}
                                 disabled={!formRenderProps.allowSubmit}
                             >
-                                Submit
+                                Build Habits!
                             </Button>
-                            <Button onClick={formRenderProps.onFormReset}>
+                            <Button 
+                                className="auth-modal"
+                                onClick={formRenderProps.onFormReset}
+                            >
                                 Clear
                             </Button>
                         </div>
@@ -46,7 +56,7 @@ const SignInModal = ({ toggleMethod }) => {
             >
 
             </Form>
-        </Dialog>
+        </Card>
     );
 }
 

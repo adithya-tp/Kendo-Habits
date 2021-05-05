@@ -3,18 +3,18 @@ import './Home.css';
 import { Button } from '@progress/kendo-react-buttons';
 import { Ripple } from '@progress/kendo-react-ripple';
 import AuthModal from '../AuthModal/AuthModal';
+import { useHistory } from 'react-router';
 
 const Home = () => {
-    const [signInModal, setSignInModal] = useState(false);
-    const [registerModal, setRegisterModal] = useState(false);
+    const history = useHistory();
+    const showSignInPage = () => {
+        history.push('/signin');
+    }
 
-    const showSignInModal = () => {
-        setSignInModal(!signInModal);
-    };
+    const showRegisterPage = () => {
+        history.push('/register');
+    }
 
-    const showRegisterModal = () => {
-        setRegisterModal(!registerModal);
-    };
     return (
         <div className="home__container">
             <div className="home__doodle">
@@ -44,24 +44,13 @@ const Home = () => {
                 {/* Add ripple effect for extra pizzazz */}
                 <Ripple>
                     <div className="buttons__one">
-                        <Button primary={true} onClick={showSignInModal}>Sign-In</Button>
-                        <Button primary={true} onClick={showRegisterModal}>Register</Button>
+                        <Button className="auth-button" primary={true} onClick={showSignInPage}>Sign-In</Button>
+                        <Button className="auth-button" primary={true} onClick={showRegisterPage}>Register</Button>
                     </div>
                     <div className="buttons__two">
-                        <Button>Login with Google</Button>
+                        <Button className="login-with-google">Login with Google</Button>
                     </div>
                 </Ripple>
-            </div>
-            <div className="signin__modal">
-                {
-                    signInModal && <AuthModal register={false} toggleMethod={showSignInModal}/>
-                }
-            </div>
-
-            <div className="register__modal">
-                {
-                    registerModal && <AuthModal register={true} toggleMethod={showRegisterModal}/>
-                }
             </div>
         </div>
     );
