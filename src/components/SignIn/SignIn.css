@@ -33,12 +33,23 @@
     padding: 50px;
 }
 
+.arrows {
+    padding: 20px;
+}
+
+.arrows:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 100px;
+    padding: 20px;
+    cursor: pointer;
+}
+
 #more-arrows {
     width: 75px;
     height: 65px;
 }
 #more-arrows:hover polygon {
-    fill: #FFF;
+    fill: #3963ed;
     transition: all 0.2s ease-out;
 }
 #more-arrows:hover polygon.arrow-bottom {
@@ -49,7 +60,7 @@
 }
 
 polygon {
-    fill: #FFF;
+    fill: black;
     transition: all 0.2s ease-out;
 }
 polygon.arrow-middle {
