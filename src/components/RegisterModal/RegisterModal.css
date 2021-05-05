@@ -1,0 +1,64 @@
+.k-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    padding: 20px;
+    margin-top: 80px;
+    width: 500px;
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+}
+
+.k-card-header {
+    font-family: 'Arvo';
+    font-weight: 600;
+    font-size: 30px;
+}
+
+.k-label{
+    font-family: 'Arvo';
+    font-size: 15px;
+}
+
+.k-textbox {
+    height: 8vh;
+    border-radius: 10px;
+    box-shadow:0px 2px 2px rgba(0, 0, 0, 0.3);
+    border: none;
+}
+
+.k-form-field-wrap > input{
+    padding: 20px;
+    font-family: 'Arvo';
+    font-size: 20px;
+    border: 1px thin lightgray;
+}
+
+#password.k-textbox {
+    margin-bottom: 30px;
+}
+
+
+.k-dialog {
+    border-radius: 20px;
+}
+
+.k-form-buttons {
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: space-around;
+}
+
+.auth-modal.k-button {
+    border-radius: 10px;
+    height: 50px;
+    min-width: 175px;
+    font-family: 'Nunito';
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.sign-in-modal.k-button {
+    background-color: #2856EC;
+}
