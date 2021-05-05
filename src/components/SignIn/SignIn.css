@@ -6,15 +6,32 @@
     background-color: #FDF074;
 }
 
+.dancing {
+    position: fixed;
+    transform: scaleX(-1) translate(500px, 100px) rotate(-15deg);
+}
+
+.dancing img {
+    transform: scale(0.5);
+    opacity: 0.15;
+}
+
+.reading {
+    position: fixed;
+    left: 25%;
+    transform: scale(0.4) translateY(500px);
+    opacity: 0.15;
+}
+
 .signin__page .loving {
     position: fixed;
     justify-self: center;
-    bottom: 60vh;
+    bottom: 50vh;
 }
 
 .loving img {
     height: 50vh;
-    max-width: 500px;
+    max-width: 600px;
 }
 
 .back__arrow h3 {

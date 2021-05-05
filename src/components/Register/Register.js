@@ -26,6 +26,9 @@ const Register = () => {
             <div className="loving">
                 <img src="assets/loving.png" alt=""/>
             </div>
+            <div className="meditating">
+                <img src="assets/meditate.png" alt=""/>
+            </div>
             <div className="register__modal">
                 <AuthModal register={true}/>
             </div>

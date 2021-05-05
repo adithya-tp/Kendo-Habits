@@ -10,11 +10,18 @@
     position: fixed;
     justify-self: center;
     bottom: 60vh;
-}
-
-.loving img {
     height: 50vh;
     max-width: 500px;
+}
+
+.register__page .meditating {
+    position: fixed;
+    top: 0;
+    right: 400px;
+}
+
+.register__page .meditating {
+    opacity: 0.15;
 }
 
 .back__arrow h3 {

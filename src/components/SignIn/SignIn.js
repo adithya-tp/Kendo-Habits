@@ -17,6 +17,13 @@ const SignIn = () => {
             exit={{ opacity: 0}}
         >
             <div className="signin__page">
+                <div className="dancing">
+                    <img src="assets/dance.png" alt=""/>
+                </div>
+
+                <div className="reading">
+                    <img src="assets/reading-side.png" alt=""/>
+                </div>
                 <div className="back__arrow">
                     <div className="back__title">
                         <h3>Back to Home</h3>
