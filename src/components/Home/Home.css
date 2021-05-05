@@ -57,7 +57,7 @@
 .home__text-top {
     width: 600px;
     position: fixed;
-    right: 130px;
+    right: 2.5vw;
     font-family: 'Arvo';
     font-size: 9vh;
     font-style: italic;
@@ -79,7 +79,7 @@
 
 .home__text-bottom {
     position: fixed;
-    right: 3vw;
+    right: 2.5vw;
     bottom: 35vh;
     display: flex;
     align-items: center;
