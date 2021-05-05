@@ -10,6 +10,7 @@
     "@progress/kendo-react-buttons": "^4.5.0",
     "@progress/kendo-react-data-tools": "^4.5.0",
     "@progress/kendo-react-dateinputs": "^4.5.0",
+    "@progress/kendo-react-dialogs": "^4.5.0",
     "@progress/kendo-react-dropdowns": "^4.5.0",
     "@progress/kendo-react-grid": "^4.5.0",
     "@progress/kendo-react-inputs": "^4.5.0",

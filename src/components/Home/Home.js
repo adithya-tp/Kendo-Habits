@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Home.css';
 import { Button } from '@progress/kendo-react-buttons';
 import { Ripple } from '@progress/kendo-react-ripple';
+import AuthModal from '../AuthModal/AuthModal';
 
 const Home = () => {
+    const [signInModal, setSignInModal] = useState(false);
+    const [registerModal, setRegisterModal] = useState(false);
+
+    const showSignInModal = () => {
+        setSignInModal(!signInModal);
+    };
+
+    const showRegisterModal = () => {
+        setRegisterModal(!registerModal);
+    };
     return (
         <div className="home__container">
             <div className="home__doodle">
@@ -33,13 +44,24 @@ const Home = () => {
                 {/* Add ripple effect for extra pizzazz */}
                 <Ripple>
                     <div className="buttons__one">
-                        <Button primary={true}>Sign-In</Button>
-                        <Button primary={true}>Register</Button>
+                        <Button primary={true} onClick={showSignInModal}>Sign-In</Button>
+                        <Button primary={true} onClick={showRegisterModal}>Register</Button>
                     </div>
                     <div className="buttons__two">
                         <Button>Login with Google</Button>
                     </div>
                 </Ripple>
+            </div>
+            <div className="signin__modal">
+                {
+                    signInModal && <AuthModal register={false} toggleMethod={showSignInModal}/>
+                }
+            </div>
+
+            <div className="register__modal">
+                {
+                    registerModal && <AuthModal register={true} toggleMethod={showRegisterModal}/>
+                }
             </div>
         </div>
     );
