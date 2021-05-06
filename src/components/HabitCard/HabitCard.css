@@ -1,0 +1,15 @@
+.habit__card.k-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 20px;
+    max-width: 400px;
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+}
+
+.habit__card.k-card-header {
+    font-family: 'Arvo';
+    font-weight: 600;
+    font-size: 1px;
+}

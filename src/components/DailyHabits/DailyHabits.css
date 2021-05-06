@@ -1,18 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700;900&display=swap');
 
-.timeline__container {
-    margin: 0;
-    padding: 0;
-    font-family: 'Arvo';
+.timeline {
+    float: right;
+    margin-top: 100px;
+    margin-right: 50px;
+    background-color: antiquewhite;
+    position: relative;
+    width: 1000px;
+    background-color: aqua;
 }
 
-.timeline {
-    position: relative;
-    margin: 50px auto;
-    padding: 40px 0;
-    width: 1000px;
-    height: 100vh;
-    background-color: aqua;
+.timeline:before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    width: 2px;
+    height: 100%;
+    background-color: #2856ec;
 }
 
 .timeline ul {
@@ -24,17 +28,8 @@
     line-height: normal;
     position: relative;
     width: 50%;
-    padding: 20px 40px;
+    padding: 0px 20px;
     list-style: none;
-}
-
-.timeline:before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    width: 2px;
-    height: 100%;
-    background-color: #2856ec;
 }
 
 .timeline ul li:nth-child(odd) {
@@ -51,10 +46,14 @@
     content: '';
     position: absolute;
     top: 24px;
+    right: 34px;
+    width: 10px;
+    height: 10px;
     background: rgba(233, 33, 99, 1);
     border-radius: 50px;
+    box-shadow: rgba(233, 33, 99, 0.2);
 }
 
 .timeline__content {
-    padding-bottom: 20px;
+    margin: 0 40px;
 }
