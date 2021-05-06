@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700;900&display=swap');
+
+.timeline__container {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arvo';
+}
+
+.timeline {
+    position: relative;
+    margin: 50px auto;
+    padding: 40px 0;
+    width: 1000px;
+    height: 100vh;
+    background-color: aqua;
+}
+
+.timeline ul {
+    margin: 0;
+    padding: 0;
+}
+
+.timeline ul li {
+    line-height: normal;
+    position: relative;
+    width: 50%;
+    padding: 20px 40px;
+    list-style: none;
+}
+
+.timeline:before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    width: 2px;
+    height: 100%;
+    background-color: #2856ec;
+}
+
+.timeline ul li:nth-child(odd) {
+    float: left;
+    text-align: right;
+}
+
+.timeline ul li:nth-child(even) {
+    float: right;
+    text-align: left;
+}
+
+.timeline ul li:nth-child(odd):before {
+    content: '';
+    position: absolute;
+    top: 24px;
+    background: rgba(233, 33, 99, 1);
+    border-radius: 50px;
+}
+
+.timeline__content {
+    padding-bottom: 20px;
+}
