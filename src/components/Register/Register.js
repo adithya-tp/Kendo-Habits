@@ -25,7 +25,13 @@ const Register = () => {
     }
 
     return (
-        <div className="register__page">
+        <motion.div
+            variants={modalVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            className="register__page"
+        >
             <div className="back__arrow">
                 <div className="back__title">
                     <h3>Back to Home</h3>
@@ -62,7 +68,7 @@ const Register = () => {
             >
                 <AuthModal register={true}/>
             </motion.div>
-        </div>
+        </motion.div>
     );
 }
 
