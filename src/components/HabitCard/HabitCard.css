@@ -4,8 +4,13 @@
     counter-increment: gradient-counter;
     min-height: 3rem;
     width: 500px;
-    padding: 1rem 1rem 1rem 3rem;
+    margin: 10px 0;
+    /* padding: 1rem 1rem 1rem 3rem; */
     position: relative;
+}
+
+.habit__card:hover {
+    cursor: pointer;
 }
 
 .habit__cardheader {

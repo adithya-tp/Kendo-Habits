@@ -11,8 +11,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: white;
-    height: 100%;
+    /* background-color: white; */
+    min-height: 100vh;
 }
 
 ol.habit__list > .k-card::before ol.habit__list > .k-card {
@@ -21,7 +21,6 @@ ol.habit__list > .k-card::before ol.habit__list > .k-card {
 }
 
 ol.habit__list {
-    list-style: none;
     margin: 1.75rem 0;
     padding-left: 1rem;
 }
