@@ -8,8 +8,8 @@ import './RegisterModal.css';
 
 const RegisterModal = () => {
     return (
-        <Card>
-            <CardHeader>
+        <Card className="register__modal">
+            <CardHeader className="register__modal-header">
                 Register
             </CardHeader>
             <Form

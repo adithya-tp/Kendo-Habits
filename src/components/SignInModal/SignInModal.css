@@ -1,4 +1,4 @@
-.k-card {
+.signin__modal {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -7,10 +7,9 @@
     margin-top: 80px;
     width: 500px;
     border-radius: 15px;
-    backdrop-filter: blur(5px);
 }
 
-.k-card-header {
+.signin__modal-header {
     font-family: 'Arvo';
     font-weight: 600;
     font-size: 30px;
@@ -38,7 +37,6 @@
 #password.k-textbox {
     margin-bottom: 30px;
 }
-
 
 .k-dialog {
     border-radius: 20px;

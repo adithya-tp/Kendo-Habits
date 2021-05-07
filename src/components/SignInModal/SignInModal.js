@@ -8,8 +8,8 @@ import './SignInModal.css';
 
 const SignInModal = () => {
     return (
-        <Card>
-            <CardHeader>
+        <Card className="signin__modal">
+            <CardHeader className="signin__modal-header">
                 Sign In
             </CardHeader>
             <Form
@@ -17,6 +17,7 @@ const SignInModal = () => {
                 render={(formRenderProps) => (
                     <FormElement style={{width: 400}}>
                         <Field
+                            className="modal__field"
                             id={'email'}
                             name={'email'}
                             label={'Email'}

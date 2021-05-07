@@ -1,59 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700;900&display=swap');
 
-.timeline {
-    float: right;
-    margin-top: 100px;
-    margin-right: 50px;
-    background-color: antiquewhite;
-    position: relative;
-    width: 1000px;
-    background-color: aqua;
+.habits_container h1 {
+    margin-top: 30px;
+    margin-left: 50px;
+    font-family: 'Arvo';
+    align-self: center;
 }
 
-.timeline:before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    width: 2px;
+.habits_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
     height: 100%;
-    background-color: #2856ec;
 }
 
-.timeline ul {
-    margin: 0;
-    padding: 0;
+ol.habit__list > .k-card::before ol.habit__list > .k-card {
+    box-shadow: 0.25rem 0.25rem 0.6rem rgba(0, 0, 0, 0.05), 0 0.5rem 1.125rem rgba(75, 0, 0, 0.05);
+    box-sizing: border-box;
 }
 
-.timeline ul li {
-    line-height: normal;
-    position: relative;
-    width: 50%;
-    padding: 0px 20px;
+ol.habit__list {
     list-style: none;
-}
-
-.timeline ul li:nth-child(odd) {
-    float: left;
-    text-align: right;
-}
-
-.timeline ul li:nth-child(even) {
-    float: right;
-    text-align: left;
-}
-
-.timeline ul li:nth-child(odd):before {
-    content: '';
-    position: absolute;
-    top: 24px;
-    right: 34px;
-    width: 10px;
-    height: 10px;
-    background: rgba(233, 33, 99, 1);
-    border-radius: 50px;
-    box-shadow: rgba(233, 33, 99, 0.2);
-}
-
-.timeline__content {
-    margin: 0 40px;
+    margin: 1.75rem 0;
+    padding-left: 1rem;
 }
