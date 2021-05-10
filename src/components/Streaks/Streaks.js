@@ -22,7 +22,7 @@ const Streaks = () => {
     const [habitsDatePicker, setHabitsDatePicker] = useState({
         value: { 
             start: new Date(2021, 5, 2), 
-            end: new Date(2021, 5, 8) 
+            end: new Date(2021, 5, 9) 
         }
     });
 
@@ -41,8 +41,12 @@ const Streaks = () => {
         },
         {
             col: "#00FFB2",
+            streak: [1, 1, 1, 1, 1, 1, 1]
+        },
+        {
+            col: "#F54CB1",
             streak: [0, 0, 0, 1, 1, 0, 1]
-        }
+        },
     ]);
 
     return (
@@ -70,7 +74,7 @@ const Streaks = () => {
                 <div className="habits__panelbar">
                     <PanelBar>
                         <PanelBarItem expanded={true} title="Habit Categories">
-                            <PanelBarItem title={'All'} />
+                            <PanelBarItem selected={true} title={'All'} />
                             <PanelBarItem title={'Sports'} />
                             <PanelBarItem title={'Mental Health'} />
                             <PanelBarItem title={'Work'} />
