@@ -17,13 +17,13 @@ const Landscape = () => {
             tiles.push(Array(WORLD_SIZE).fill('land_dark'));
         }
     }
-    const yOffset = (100 / WORLD_SIZE) * (TILE_ASPECT_RATIO / 1.6);
+    const yOffset = (100 / WORLD_SIZE) * (TILE_ASPECT_RATIO / 2.6);
 
     return (
         <>
             {
                 tiles.map((row, y) => {
-                    const yBase = yOffset * y;
+                    const yBase = yOffset * y + 25;
                     const xBase = 50 - (100 / (4 * WORLD_SIZE)) * y;
                     return row.map((tile, x) => {
                         const z = x + 100;
@@ -43,5 +43,4 @@ const Landscape = () => {
     );
 }
 
-// export default React.memo(Landscape);
-export default Landscape;
+export default React.memo(Landscape);

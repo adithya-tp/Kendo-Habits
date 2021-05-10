@@ -1,0 +1,93 @@
+.streaks__main {
+    background-color: #FFF8B2;
+    display: flex;
+}
+
+.streaks__left {
+    width: 10vw;
+    background-color: aqua;
+}
+
+.streaks__middle {
+    justify-self: center;
+    width: 70vw;
+    min-height: 100vh;
+}
+
+.habbits__middle {
+
+}
+
+.title__middle {
+    margin: 20px 0;
+    font-family: 'Arvo';
+    text-align: center;
+}
+
+.streaks__right {
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.habit__streaks {
+    margin: 10px;
+    max-width: fit-content;
+    --num-rows: 3;
+    --num-cols: 7;
+    display: grid;
+    grid-template: repeat(var(--num-rows), 100px) / repeat(var(--num-cols), 100px);
+    grid-gap: 2px;
+}
+
+.habits__panelbar {
+    margin: 50px 20px;
+}
+
+.habits__panelbar .k-panelbar {
+    box-shadow:-1px 3px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+.habits__panelbar .k-link {
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.k-daterangepicker-wrap {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+}
+
+.k-dateinput-wrap > input {
+    font-family: 'Arvo';
+}
+
+.habits__datepicker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.habits__datepicker h3 {
+    margin-top: 8px;
+    color: white;
+    text-align: center;
+    font-family: 'Arvo';
+}
+
+.datepicker__header {
+    background-color: #ff4081;
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.habits__datepicker-card > .k-card {
+    margin: 0px 20px 40px 20px;
+    border-radius: 10px;
+    padding: 30px 10px 40px 10px;
+}

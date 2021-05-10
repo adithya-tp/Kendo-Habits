@@ -5,6 +5,7 @@ import '../Garden/game.css';
 const Tile = ({ src, x, y, z }) => {
     return (
         <motion.img
+            whileHover={{opacity: 0.2}}
             alt="garden_tile"
             src={src}
             className="tile"
