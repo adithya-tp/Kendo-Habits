@@ -31,7 +31,7 @@ const GardenMini = ({ itemPosition }) => {
 
     const handleSquareClick = (x, y) => {
         setCoordinates([x, y]);
-    }    
+    }
 
     return (
         <div className="garden__mini-grid"
