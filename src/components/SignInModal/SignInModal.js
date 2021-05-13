@@ -7,13 +7,28 @@ import React, { useState } from 'react';
 import { FormInput } from '../AuthModal/FormInput';
 import { emailValidator, passwordValidator } from '../AuthModal/validators';
 import './SignInModal.css';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { useAuth } from '../../contexts/AuthContext';
 
 const SignInModal = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [authErrorMessage, setAuthErrorMessage] = useState('');
+    const history = useHistory();
+
+    const { login } = useAuth();
+
+    async function handleSubmit() {
+        login(email, password)
+        .then((userCredential) => {
+            var user = userCredential.user;
+            history.push("/user");
+        })
+        .catch((error) => {
+            setAuthErrorMessage(error.message);
+        });
+    }
 
     return (
         <Card className="signin__modal">
@@ -50,6 +65,7 @@ const SignInModal = () => {
                                 className="auth-modal sign-in-modal"
                                 primary={true}
                                 type={'submit'}
+                                onClick={handleSubmit}
                                 disabled={!formRenderProps.allowSubmit}
                             >
                                 Build Habits!

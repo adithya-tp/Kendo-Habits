@@ -8,7 +8,7 @@ import React, { useState } from 'react';
 import { FormInput } from '../AuthModal/FormInput';
 import './RegisterModal.css';
 import { useAuth } from '../../contexts/AuthContext';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 const RegisterModal = () => {
 
@@ -16,6 +16,7 @@ const RegisterModal = () => {
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
     const [authErrorMessage, setAuthErrorMessage] = useState('');
+    const history = useHistory();
 
     const { signup } = useAuth();
 
@@ -23,6 +24,7 @@ const RegisterModal = () => {
         signup(email, password)
         .then((userCredential) => {
             var user = userCredential.user;
+            history.push("/user");
         })
         .catch((error) => {
             setAuthErrorMessage(error.message);
