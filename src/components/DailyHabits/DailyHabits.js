@@ -63,8 +63,10 @@ const DailyHabits = () => {
             <HabitAppBar userName={appbarDisplay} />
             <h1> Your daily habits...</h1>
             <ol className="habit__list">
-                <Input style={{ fontFamily: 'Arvo', backgroundColor: "white", padding: "0 20px", margin: "0 20px"}} max={50} value={input} onChange={(e) => setInput(e.target.value)} />
-                <Button disabled={!input.length} onClick={addHabit}>Add Item</Button>
+                <div className="daily__habits-input">
+                    <Input max={50} value={input} onChange={(e) => setInput(e.target.value)} />
+                    <Button disabled={!input.length} onClick={addHabit}>Add Item</Button>
+                </div>
                 {
                     habits.map((habit) => (
                         <HabitCard key={habit.id} title={habit.habit} />

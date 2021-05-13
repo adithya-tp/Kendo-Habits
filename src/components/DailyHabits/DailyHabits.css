@@ -26,3 +26,10 @@ ol.habit__list {
     margin: 1.75rem 0;
     padding-left: 1rem;
 }
+
+.daily__habits-input .k-textbox { 
+    font-family: 'Arvo';
+    background-color: white;
+    padding: 0 20px;
+    margin: 0 20px;
+}
