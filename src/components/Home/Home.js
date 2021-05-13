@@ -1,8 +1,9 @@
-import './Home.css';
 import { Button } from '@progress/kendo-react-buttons';
 import { Ripple } from '@progress/kendo-react-ripple';
+
 import { useHistory } from 'react-router';
 import { motion } from 'framer-motion';
+import './Home.css';
 
 const Home = () => {
     const history = useHistory();

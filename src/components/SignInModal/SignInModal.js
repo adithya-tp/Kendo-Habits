@@ -1,11 +1,12 @@
 import { Button } from '@progress/kendo-react-buttons';
 import { Form, Field, FormElement } from '@progress/kendo-react-form';
+import { Card, CardHeader } from '@progress/kendo-react-layout';
+import { Error, Hint } from '@progress/kendo-react-labels';
+
 import React, { useState } from 'react';
 import { FormInput } from '../AuthModal/FormInput';
 import { emailValidator, passwordValidator } from '../AuthModal/validators';
-import { Card, CardHeader } from '@progress/kendo-react-layout';
 import './SignInModal.css';
-import { Error, Hint } from '@progress/kendo-react-labels';
 import { Link } from 'react-router-dom';
 
 const SignInModal = () => {

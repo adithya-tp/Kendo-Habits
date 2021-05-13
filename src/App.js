@@ -1,5 +1,5 @@
-import './App.css';
 import '@progress/kendo-theme-material/dist/all.css';
+
 import Home from './components/Home/Home';
 import { Route, Switch, useLocation } from 'react-router-dom';
 import SignIn from './components/SignIn/SignIn';
@@ -9,6 +9,7 @@ import DailyHabits from './components/DailyHabits/DailyHabits';
 import GardenPage from './components/GardenPage/GardenPage';
 import Streaks from './components/Streaks/Streaks';
 import { AuthProvider } from './contexts/AuthContext';
+import './App.css';
 
 function App() {
   const location = useLocation();

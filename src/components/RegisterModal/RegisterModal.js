@@ -1,11 +1,12 @@
 import { Button } from '@progress/kendo-react-buttons';
 import { Form, Field, FormElement } from '@progress/kendo-react-form';
+import { Card, CardHeader } from '@progress/kendo-react-layout';
+import { Error, Hint } from '@progress/kendo-react-labels';
+import { emailValidator, nameValidator, passwordValidator } from '../AuthModal/validators';
+
 import React, { useState } from 'react';
 import { FormInput } from '../AuthModal/FormInput';
-import { emailValidator, nameValidator, passwordValidator } from '../AuthModal/validators';
-import { Card, CardHeader } from '@progress/kendo-react-layout';
 import './RegisterModal.css';
-import { Error, Hint } from '@progress/kendo-react-labels';
 import { useAuth } from '../../contexts/AuthContext';
 import { Link } from 'react-router-dom';
 
