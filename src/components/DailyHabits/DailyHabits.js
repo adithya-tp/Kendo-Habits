@@ -9,6 +9,7 @@ import './DailyHabits.css';
 import firebase from 'firebase';
 import { Button } from '@progress/kendo-react-buttons';
 import { useAuth } from '../../contexts/AuthContext';
+import { Dialog } from '@progress/kendo-react-dialogs';
 
 const DailyHabits = () => {
 
@@ -58,6 +59,9 @@ const DailyHabits = () => {
         setInput('');
     }
 
+    const [expandMe, setExpandMe] = useState(false);
+    const [habitOverlay, setHabitOverlay] = useState();
+
     return (
         <div className="habits_container">
             <HabitAppBar userName={appbarDisplay} />
@@ -69,10 +73,31 @@ const DailyHabits = () => {
                 </div>
                 {
                     habits.map((habit) => (
-                        <HabitCard key={habit.id} title={habit.habit} />
+                        <div 
+                            key={habit.id}
+                            className="daily__habit-wrapper"
+                            onClick={(e) => {
+                                // console.log("clicked");
+                                setHabitOverlay(habit);
+                                console.log(habitOverlay);
+                                setExpandMe(!expandMe);
+                                console.log(expandMe);
+                            }}
+                        >
+                            <HabitCard key={habit.id} title={habit.habit} />
+                        </div>
+                        
                     ))
                 }
             </ol>
+            {
+                expandMe && 
+                (
+                    <Dialog className="overlay__card" title={habitOverlay.habit} onClose={() => setExpandMe(false)}>
+                        <h3>Description</h3>
+                    </Dialog>
+                )
+            }
         </div>
     );
 }
