@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import StreakTile from '../StreakTile/StreakTile';
 import { Card, PanelBar, PanelBarItem } from '@progress/kendo-react-layout';
 import { DateRangePicker } from '@progress/kendo-react-dateinputs';
 import './Streaks.css'
+import { useAuth } from '../../contexts/AuthContext';
+import HabitAppBar from '../HabitAppBar/HabitAppBar';
 
 function createHabitStreaks(data) {
     // console.log(data);
@@ -18,6 +20,15 @@ function createHabitStreaks(data) {
 };
 
 const Streaks = () => {
+
+    const { currentUser } = useAuth();
+    const [appbarDisplay, setAppbarDisplay] = useState('');
+
+    useEffect(() => {
+        if(currentUser) {
+            setAppbarDisplay(currentUser.displayName);
+        }
+    });
 
     const [habitsDatePicker, setHabitsDatePicker] = useState({
         value: { 
@@ -50,50 +61,52 @@ const Streaks = () => {
     ]);
 
     return (
-
-        <div className="streaks__main">
-            <div className="streaks__middle">
-                <div className="title__middle">
-                    <h1>Your Habits Streak</h1>
-                </div>
-                <div className="habits__middle">
-                    <div className="date__hover">
-                        <h2>May 1</h2>
+        <>
+            <HabitAppBar userName={appbarDisplay} />
+            <div className="streaks__main">
+                <div className="streaks__middle">
+                    <div className="title__middle">
+                        <h1>Your Habits Streak</h1>
                     </div>
-                    <div className="habit__streaks">
-                        {
-                            createHabitStreaks(habitsData)
-                        }
-                    </div>
-                </div>
-            </div>
-            <div className="streaks__right">
-                <div className="habits__panelbar">
-                    <PanelBar>
-                        <PanelBarItem expanded={true} title="Habit Categories">
-                            <PanelBarItem selected={true} title={'All'} />
-                            <PanelBarItem title={'Sports'} />
-                            <PanelBarItem title={'Mental Health'} />
-                            <PanelBarItem title={'Work'} />
-                            <PanelBarItem title={'Coding'} />
-                        </PanelBarItem>
-                    </PanelBar>
-                </div>
-                <div className="habits__datepicker-card">
-                    <Card>
-                        <div className="habits__datepicker">
-                            <div className="datepicker__header">
-                                <h3>Habit Timeline</h3>
-                            </div>
-                            <DateRangePicker
-                                value={habitsDatePicker.value}
-                                onChange={habitsDateChange}
-                            />
+                    <div className="habits__middle">
+                        <div className="date__hover">
+                            <h2>May 1</h2>
                         </div>
-                    </Card>
+                        <div className="habit__streaks">
+                            {
+                                createHabitStreaks(habitsData)
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div className="streaks__right">
+                    <div className="habits__panelbar">
+                        <PanelBar>
+                            <PanelBarItem expanded={true} title="Habit Categories">
+                                <PanelBarItem selected={true} title={'All'} />
+                                <PanelBarItem title={'Sports'} />
+                                <PanelBarItem title={'Mental Health'} />
+                                <PanelBarItem title={'Work'} />
+                                <PanelBarItem title={'Coding'} />
+                            </PanelBarItem>
+                        </PanelBar>
+                    </div>
+                    <div className="habits__datepicker-card">
+                        <Card>
+                            <div className="habits__datepicker">
+                                <div className="datepicker__header">
+                                    <h3>Habit Timeline</h3>
+                                </div>
+                                <DateRangePicker
+                                    value={habitsDatePicker.value}
+                                    onChange={habitsDateChange}
+                                />
+                            </div>
+                        </Card>
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 }
 

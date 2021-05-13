@@ -1,0 +1,28 @@
+.appbar__name {
+    font-size: 18px;
+    font-family: 'Arvo';
+    margin: 0;
+}
+
+.user__welcome {
+    font-size: 18px;
+    font-family: 'Arvo';
+    margin: 0;
+}
+
+.habit__appbar {
+    position: relative;
+    margin-top: 5px;
+    margin-right: 15px;
+    align-self: stretch;
+    border-radius: 15px;
+    background-color: white;
+    z-index: 100;
+}
+
+.k-appbar-section {
+    margin: 0;
+    padding: 0;
+    height: 4vh;
+    text-align: center;
+}

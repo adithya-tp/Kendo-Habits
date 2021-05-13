@@ -24,6 +24,9 @@ const RegisterModal = () => {
         signup(email, password)
         .then((userCredential) => {
             var user = userCredential.user;
+            user.updateProfile({
+                displayName: name
+            });
             history.push("/user");
         })
         .catch((error) => {
