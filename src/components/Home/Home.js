@@ -93,7 +93,7 @@ const Home = () => {
                             <Button className="auth-button" primary={true} onClick={showRegisterPage}>Register</Button>
                         </div>
                         <div className="buttons__two">
-                            <Button className="login-with-google">Login with Google</Button>
+                            <Button className="login-with-google">Log-in with Google</Button>
                         </div>
                     </Ripple>
                 </motion.div>
