@@ -1,7 +1,8 @@
 .garden__page {
-    min-width: 100vw;
+    transform: translate(-16vw);
+    width: 100vw;
     min-height: 100vh;
-    background-color:aqua;
+    background-color: #FDF074;
 }
 
 .mini__garden {

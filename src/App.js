@@ -10,6 +10,7 @@ import GardenPage from './components/GardenPage/GardenPage';
 import Streaks from './components/Streaks/Streaks';
 import { AuthProvider } from './contexts/AuthContext';
 import './App.css';
+import SideBar from './components/SideBar/SideBar';
 
 function App() {
   const location = useLocation();
@@ -32,9 +33,11 @@ function App() {
               />
               <Route path="/login" component={SignIn} />
               <Route path="/register" component={Register} />
-              <Route path="/user" component={DailyHabits} />
-              <Route path="/garden" component={GardenPage} />
-              <Route path="/habit-streak" component={Streaks} />
+              <SideBar>
+                <Route path="/user" component={DailyHabits} />
+                <Route path="/habit-streak" component={Streaks} />
+                <Route path="/garden" component={GardenPage} />
+              </SideBar>
             </Switch>
           </AnimatePresence>
       </div>

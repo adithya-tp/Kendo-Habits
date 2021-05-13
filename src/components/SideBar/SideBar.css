@@ -1,0 +1,7 @@
+.sidebar-dashboard .k-drawer{
+    height: 80vh;
+    border-radius: 10px;
+    align-self: center;
+    margin-left: 10px;
+    z-index: 10;
+}

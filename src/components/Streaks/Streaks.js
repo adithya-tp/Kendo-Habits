@@ -5,13 +5,13 @@ import { DateRangePicker } from '@progress/kendo-react-dateinputs';
 import './Streaks.css'
 
 function createHabitStreaks(data) {
-    console.log(data);
+    // console.log(data);
     let cols = [];
     for(let i = 0; i < data.length * data[0].streak.length; i++) {
         let clr;
-        console.log(i);
+        // console.log(i);
         clr = data[Math.floor(i / 7)].streak[i % 7] ? data[Math.floor(i / 7)].col : "#e0e0e0";
-        console.log(clr);
+        // console.log(clr);
         cols.push(<StreakTile key={i} color={clr} />)
     }
     return cols;
@@ -52,9 +52,6 @@ const Streaks = () => {
     return (
 
         <div className="streaks__main">
-            <div className="streaks__left">
-                <h2>hamburger menu</h2>
-            </div>
             <div className="streaks__middle">
                 <div className="title__middle">
                     <h1>Your Habits Streak</h1>

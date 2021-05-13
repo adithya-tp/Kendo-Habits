@@ -1,21 +1,18 @@
 .streaks__main {
     background-color: #FDF074;
-    /* background-color: #FFF8B2; */
     display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
 }
 
-.streaks__left {
-    width: 10vw;
-    /* background-color: aqua; */
-    text-align: center;
-}
 
 .streaks__middle {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 70vw;
-    min-height: 100vh;
+    min-width: 60vw;
+    height: 100%;
 }
 
 .habbits__middle {
@@ -39,7 +36,7 @@
     border-radius: 10px;
     background-color: #5A2727;
 
-    width: 20vw;
+    min-width: 20vw;
     height: fit-content;
     align-self: center;
     display: flex;
