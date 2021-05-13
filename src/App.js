@@ -8,6 +8,7 @@ import { AnimatePresence } from "framer-motion";
 import DailyHabits from './components/DailyHabits/DailyHabits';
 import GardenPage from './components/GardenPage/GardenPage';
 import Streaks from './components/Streaks/Streaks';
+import { AuthProvider } from './contexts/AuthContext';
 
 function App() {
   const location = useLocation();
@@ -19,22 +20,24 @@ function App() {
   }
 
   return (
-    <div className="App">
-        <AnimatePresence>
-          <Switch location={location} key={location.key}>
-            <Route
-              variants={homeVariants}
-              exit="exit"
-              exact path="/" component={Home} 
-            />
-            <Route path="/signIn" component={SignIn} />
-            <Route path="/register" component={Register} />
-            <Route path="/user" component={DailyHabits} />
-            <Route path="/garden" component={GardenPage} />
-            <Route path="/habit-streak" component={Streaks} />
-          </Switch>
-        </AnimatePresence>
-    </div>
+    <AuthProvider>
+      <div className="App">
+          <AnimatePresence>
+            <Switch location={location} key={location.key}>
+              <Route
+                variants={homeVariants}
+                exit="exit"
+                exact path="/" component={Home}
+              />
+              <Route path="/login" component={SignIn} />
+              <Route path="/register" component={Register} />
+              <Route path="/user" component={DailyHabits} />
+              <Route path="/garden" component={GardenPage} />
+              <Route path="/habit-streak" component={Streaks} />
+            </Switch>
+          </AnimatePresence>
+      </div>
+    </AuthProvider>
   );
 }
 

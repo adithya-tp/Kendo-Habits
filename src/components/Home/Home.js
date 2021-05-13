@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 const Home = () => {
     const history = useHistory();
     const showSignInPage = () => {
-        history.push('/signin');
+        history.push('/login');
     }
 
     const showRegisterPage = () => {

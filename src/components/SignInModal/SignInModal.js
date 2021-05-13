@@ -5,19 +5,14 @@ import { FormInput } from '../AuthModal/FormInput';
 import { emailValidator, passwordValidator } from '../AuthModal/validators';
 import { Card, CardHeader } from '@progress/kendo-react-layout';
 import './SignInModal.css';
-import { auth } from '../../firebase';
-import { Error } from '@progress/kendo-react-labels';
+import { Error, Hint } from '@progress/kendo-react-labels';
+import { Link } from 'react-router-dom';
 
 const SignInModal = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [authErrorMessage, setAuthErrorMessage] = useState('');
-
-    const signIn = () => {
-        auth.signInWithEmailAndPassword(email, password)
-        .catch((error) => setAuthErrorMessage(error.message));
-    }
 
     return (
         <Card className="signin__modal">
@@ -55,7 +50,6 @@ const SignInModal = () => {
                                 primary={true}
                                 type={'submit'}
                                 disabled={!formRenderProps.allowSubmit}
-                                onClick={signIn}
                             >
                                 Build Habits!
                             </Button>
@@ -70,6 +64,9 @@ const SignInModal = () => {
                 )}
             >
             </Form>
+            <Hint>
+                Need an account? &nbsp;&nbsp; <Link to="/register">Register</Link>
+            </Hint>
             <Error>
                 {authErrorMessage}
             </Error>
