@@ -27,7 +27,7 @@ const Landscape = () => {
         <>
             {
                 tiles.map((row, y) => {
-                    const yBase = yOffset * y + 20;
+                    const yBase = yOffset * y + 40;
                     
                     const xBase = 50 - (100 / (4 * WORLD_SIZE)) * y;
                     return row.map((tile, x) => {
