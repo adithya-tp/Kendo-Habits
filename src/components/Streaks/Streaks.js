@@ -5,6 +5,7 @@ import { DateRangePicker } from '@progress/kendo-react-dateinputs';
 import './Streaks.css'
 import { useAuth } from '../../contexts/AuthContext';
 import HabitAppBar from '../HabitAppBar/HabitAppBar';
+import { useHistory } from 'react-router';
 
 function createHabitStreaks(data) {
     // console.log(data);
@@ -23,6 +24,7 @@ const Streaks = () => {
 
     const { currentUser } = useAuth();
     const [appbarDisplay, setAppbarDisplay] = useState('');
+    const history = useHistory();
 
     useEffect(() => {
         if(currentUser) {
@@ -66,7 +68,7 @@ const Streaks = () => {
             <div className="streaks__main">
                 <div className="streaks__middle">
                     <div className="title__middle">
-                        <h1>Your Habits Streak</h1>
+                        <h1>Your Habit Streaks</h1>
                     </div>
                     <div className="habits__middle">
                         <div className="date__hover">

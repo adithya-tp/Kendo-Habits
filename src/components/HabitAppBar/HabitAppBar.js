@@ -5,7 +5,7 @@ import './HabitAppBar.css';
 let kendokaAvatar = "https://www.telerik.com/kendo-react-ui-develop/images/kendoka-react.png";
 
 const HabitAppBar = ({ userName }) => {
-    console.log(userName);
+    // console.log(userName);
     return (
         <>
             <AppBar className="habit__appbar">
