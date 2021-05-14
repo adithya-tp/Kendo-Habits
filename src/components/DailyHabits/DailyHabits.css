@@ -2,7 +2,7 @@
 
 .habits_container h1 {
     margin-top: 30px;
-    margin-left: 50px;
+    margin-right: 50px;
     font-family: 'Arvo';
     align-self: center;
     border-bottom: 1px solid black;
@@ -27,9 +27,27 @@ ol.habit__list {
     padding-left: 1rem;
 }
 
+.daily__habits-input {
+    display: flex;
+}
+
+.daily__habits-input .k-form-hint {
+    font-family: 'Arvo';
+    margin-right: 10px;
+
+}
+
 .daily__habits-input .k-textbox { 
     font-family: 'Arvo';
     background-color: white;
+    width: 500px;
     padding: 0 20px;
-    margin: 0 20px;
+    margin-right: 10px;
+}
+
+.daily__habits-input .k-button {
+    background-color: #3963ed;
+    color: white;
+    border-radius: 10px;
+    height: 60px;
 }

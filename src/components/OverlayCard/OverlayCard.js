@@ -1,7 +1,8 @@
 import { Dialog } from '@progress/kendo-react-dialogs';
 import { TextArea } from '@progress/kendo-react-inputs';
 import { Field, FieldWrapper, Form, FormElement } from '@progress/kendo-react-form';
-import { Hint, Label, Error } from '@progress/kendo-react-labels';
+import { Hint, Label } from '@progress/kendo-react-labels';
+import { MultiSelect } from '@progress/kendo-react-dropdowns';
 import React from 'react';
 import './OverlayCard.css';
 
@@ -26,19 +27,22 @@ const FormTextArea = fieldRenderProps => {
             <Label editorId={id} editorValid={valid} editorDisabled={disabled} optional={optional}>{label}</Label>
             <div className={'k-form-field-wrap'}>
                 <TextArea valid={valid} type={type} id={id} disabled={disabled} maxLength={max} rows={4} {...others} />
-                <Hint direction={'end'} style={{
+                <Hint direction='end' style={{
                     position: 'absolute',
-                    right: 0
+                    right: 0,
+                    fontFamily: 'Arvo', 
+                    paddingLeft: '10px'
                 }}>
                     {value.length} / {max}
                 </Hint>
-                <Hint>{hint}</Hint>
+                <Hint style={{ fontFamily: 'Arvo'}} direction='start'>{hint}</Hint>
             </div>
         </FieldWrapper>
     );
 };
 
 const OverlayCard = ({ habit, toggleExpand }) => {
+    const labels = habit.habitLabels;
     return (
         <Dialog className="overlay__card" title={habit.habit} onClose={() => toggleExpand(false)}>
             <div className="overlay__card-textarea">

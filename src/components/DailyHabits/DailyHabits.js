@@ -11,6 +11,7 @@ import { Button } from '@progress/kendo-react-buttons';
 import { Dialog } from '@progress/kendo-react-dialogs';
 import { useHistory } from 'react-router';
 import OverlayCard from '../OverlayCard/OverlayCard';
+import { Hint } from '@progress/kendo-react-labels';
 
 const DailyHabits = () => {
 
@@ -54,7 +55,6 @@ const DailyHabits = () => {
 
     const addHabit = (e) => {
         e.preventDefault();
-        // console.log(currentUser.uid);
         db.collection('users')
         .doc(currentUser.uid)
         .collection('dailyHabits')
@@ -77,8 +77,11 @@ const DailyHabits = () => {
             <h1> Your daily habits...</h1>
             <ol className="habit__list">
                 <div className="daily__habits-input">
-                    <Input max={50} value={input} onChange={(e) => setInput(e.target.value)} />
-                    <Button disabled={!input.length} onClick={addHabit}>Add Item</Button>
+                    <div className="input__hint">
+                        <Input max={50} value={input} onChange={(e) => setInput(e.target.value)} />
+                        <Hint direction="start">{!input && "Add a new habit"}</Hint>
+                    </div>
+                    <Button disabled={!input.length} onClick={addHabit}>Add Habit</Button>
                 </div>
                 {
                     habits.map((habit) => (
