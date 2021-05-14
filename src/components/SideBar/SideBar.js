@@ -44,7 +44,7 @@ const SideBar = (props) => {
 
     const setSelectedItem = (pathName) => {
         let currentPath = sidebarOptions.find((option) => option.route === pathName);
-        if (currentPath.text) {
+        if (currentPath && currentPath.text) {
             return currentPath.text;
         }
     };

@@ -1,23 +1,23 @@
 import React from 'react';
 import { AppBar, AppBarSection, AppBarSpacer, Avatar } from "@progress/kendo-react-layout";
 import './HabitAppBar.css';
-// import { useAuth } from '../../contexts/AuthContext';
-// import { useHistory } from 'react-router';
+import { useAuth } from '../../contexts/AuthContext';
+import { useHistory } from 'react-router';
 
 let kendokaAvatar = "https://www.telerik.com/kendo-react-ui-develop/images/kendoka-react.png";
 
 const HabitAppBar = ({ userName }) => {
-    // const { logout } = useAuth();
-    // const history = useHistory();
+    const { logout } = useAuth();
+    const history = useHistory();
 
     async function handleLogout() {
         console.log("clicked");
-        // try {
-        //     await logout();
-        //     history.push("/");
-        // } catch {
-        //     console.log("Could not log out!");
-        // }
+        try {
+            await logout();
+            history.push("/");
+        } catch {
+            console.log("Could not log out!");
+        }
     }
 
     return (
