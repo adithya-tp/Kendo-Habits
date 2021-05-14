@@ -9,6 +9,9 @@ import { FormInput } from '../AuthModal/FormInput';
 import './RegisterModal.css';
 import { useAuth } from '../../contexts/AuthContext';
 import { Link, useHistory } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEye } from '@fortawesome/free-solid-svg-icons'
+import { motion } from 'framer-motion';
 
 const RegisterModal = () => {
 
@@ -21,17 +24,21 @@ const RegisterModal = () => {
     const { signup } = useAuth();
 
     async function handleSubmit() {
-        signup(email, password)
-        .then((userCredential) => {
-            var user = userCredential.user;
-            user.updateProfile({
-                displayName: name
+        if(name && email && password) {
+            signup(email, password)
+            .then((userCredential) => {
+                var user = userCredential.user;
+                user.updateProfile({
+                    displayName: name
+                });
+                history.push("/user");
+            })
+            .catch((error) => {
+                setAuthErrorMessage(error.message);
             });
-            history.push("/user");
-        })
-        .catch((error) => {
-            setAuthErrorMessage(error.message);
-        });
+        } else {
+            setAuthErrorMessage("Empty Fields");
+        }
     }
 
     return (
@@ -63,16 +70,21 @@ const RegisterModal = () => {
                             component={FormInput}
                             validator={emailValidator}
                         />
-                        <Field
-                            onChange={(e) => setPassword(e.target.value)}
-                            id={'password'}
-                            name={'password'}
-                            label={'Password'}
-                            type={'password'}
-                            placeholder={'Enter your password...'}
-                            component={FormInput}
-                            validator={passwordValidator}
-                        />
+                        <div className="register__password-field" style={{ display: "flex", alignItems:"center"}}>
+                            <Field
+                                onChange={(e) => setPassword(e.target.value)}
+                                id={'password'}
+                                name={'password'}
+                                label={'Password'}
+                                type={'password'}
+                                placeholder={'Enter your password...'}
+                                component={FormInput}
+                                validator={passwordValidator}
+                            />
+                            <motion.div whileTap={{ scale: 0.9 }} className="register__eye" style={{ borderRadius: "10px", boxShadow: "-2px 3px black", marginLeft: "30px", cursor: "pointer", margin: "20px 0 0 40px", padding:"10px 10px", backgroundColor:"#FDF074"}}>
+                                <FontAwesomeIcon size='3x' icon={faEye} />
+                            </motion.div>
+                        </div>
                         <div className="k-form-buttons">
                             <Button
                                 className="auth-modal sign-in-modal"

@@ -20,14 +20,18 @@ const SignInModal = () => {
     const { login } = useAuth();
 
     async function handleSubmit() {
-        login(email, password)
-        .then((userCredential) => {
-            var user = userCredential.user;
-            history.push("/user");
-        })
-        .catch((error) => {
-            setAuthErrorMessage(error.message);
-        });
+        if(email && password) {
+            login(email, password)
+            .then((userCredential) => {
+                var user = userCredential.user;
+                history.push("/user");
+            })
+            .catch((error) => {
+                setAuthErrorMessage(error.message);
+            });
+        } else {
+            setAuthErrorMessage("Empty Fields");
+        }
     }
 
     return (
