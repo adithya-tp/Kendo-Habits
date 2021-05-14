@@ -3,8 +3,10 @@ import { TextArea } from '@progress/kendo-react-inputs';
 import { Field, FieldWrapper, Form, FormElement } from '@progress/kendo-react-form';
 import { Hint, Label } from '@progress/kendo-react-labels';
 import { MultiSelect } from '@progress/kendo-react-dropdowns';
-import React from 'react';
+import React, { useState } from 'react';
 import './OverlayCard.css';
+import { AppBarSpacer } from '@progress/kendo-react-layout';
+import { Button } from '@progress/kendo-react-buttons';
 
 const FormTextArea = fieldRenderProps => {
     const {
@@ -26,23 +28,24 @@ const FormTextArea = fieldRenderProps => {
         <FieldWrapper>
             <Label editorId={id} editorValid={valid} editorDisabled={disabled} optional={optional}>{label}</Label>
             <div className={'k-form-field-wrap'}>
-                <TextArea valid={valid} type={type} id={id} disabled={disabled} maxLength={max} rows={4} {...others} />
-                <Hint direction='end' style={{
-                    position: 'absolute',
-                    right: 0,
-                    fontFamily: 'Arvo', 
-                    paddingLeft: '10px'
-                }}>
-                    {value.length} / {max}
-                </Hint>
-                <Hint style={{ fontFamily: 'Arvo'}} direction='start'>{hint}</Hint>
+                <TextArea valid={valid} type={type} id={id} disabled={disabled} maxLength={max} rows={3} {...others} />
+                <div className="textarea__hints">  
+                    <div>
+                        <Hint direction="end" className="hint__two" style={{ fontFamily: 'Arvo'}}>{value.length} / {max}</Hint>
+                    </div>
+                </div>
             </div>
         </FieldWrapper>
     );
 };
 
 const OverlayCard = ({ habit, toggleExpand }) => {
-    const labels = habit.habitLabels;
+    const [value, setValue] = useState([]);
+
+    const onChangeLabel = (e) => {
+        setValue([...e.value]);
+    };
+
     return (
         <Dialog className="overlay__card" title={habit.habit} onClose={() => toggleExpand(false)}>
             <div className="overlay__card-textarea">
@@ -63,6 +66,18 @@ const OverlayCard = ({ habit, toggleExpand }) => {
                         />
                     </FormElement>}
                 />
+            </div>
+
+            <div className="multiselect__area">
+                <div>Habit Labels:</div>
+                <MultiSelect autocomplete="on" data={habit.habitLabels} onChange={onChangeLabel} value={value} />
+                {console.log(<MultiSelect data={habit.habitLabels} onChange={onChangeLabel} value={value} />)}
+            </div>
+            
+
+            <div className="habit__buttons">
+                <Button className="save-habbit__button">Save Changes</Button>
+                <Button className="delete-habit__button">Delete Habit</Button>
             </div>
         </Dialog>
     );

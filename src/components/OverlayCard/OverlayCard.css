@@ -1,6 +1,6 @@
 .overlay__card .k-dialog {
     background-color: white;
-    min-height: 400px;
+    min-height: 450px;
     min-width: 400px;
 }
 
@@ -8,11 +8,6 @@
     font-family: 'Arvo';
     justify-content: center;
     border-bottom: 2px solid black;
-}
-
-.overlay__card-textarea {
-    display: flex;
-    /* justify-content: center; */
 }
 
 .overlay__card-textarea .k-textarea {
@@ -27,4 +22,40 @@
 .overlay__card .k-textarea:hover {
     background-color: #a5cbf7;
     color: black;
+}
+
+.multiselect__area {
+    margin-top: 170px;
+}
+
+.k-window-action {
+    border-radius: 10px;
+}
+
+.textarea__hints {
+    display: flex;
+    width: 350px;
+}
+
+.textarea__hints > div {
+    width: 100%;
+    justify-self: flex-end;
+}
+
+.habit__buttons { 
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.save-habbit__button {
+    background-color: #22B573;
+    color: white;
+    border-radius: 10px;
+}
+
+.delete-habit__button {
+    background-color: rgb(197, 34, 29);
+    color: white;
+    border-radius: 10px;
 }
