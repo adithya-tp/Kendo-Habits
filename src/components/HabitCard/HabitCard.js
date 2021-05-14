@@ -11,9 +11,9 @@ const HabitCard = ({ title }) => {
             className="habit__card"
         >
             <Card className="habit__card">
-                <CardHeader className="habit__cardheader">
-                    {title}
-                </CardHeader>
+                    <CardHeader className="habit__cardheader">
+                        {title}
+                    </CardHeader>
             </Card>
         </motion.div>
     );

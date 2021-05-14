@@ -1,17 +1,15 @@
 import { Input } from '@progress/kendo-react-inputs';
 import React, { useEffect, useState } from 'react';
-// import { useHistory } from 'react-router';
-// import { useAuth } from '../../contexts/AuthContext';
 import { auth, db } from '../../firebase';
 import HabitAppBar from '../HabitAppBar/HabitAppBar';
 import HabitCard from '../HabitCard/HabitCard';
 import './DailyHabits.css';
 import firebase from 'firebase';
 import { Button } from '@progress/kendo-react-buttons';
-import { Dialog } from '@progress/kendo-react-dialogs';
 import { useHistory } from 'react-router';
 import OverlayCard from '../OverlayCard/OverlayCard';
 import { Hint } from '@progress/kendo-react-labels';
+import { motion } from 'framer-motion';
 
 const DailyHabits = () => {
 
@@ -46,10 +44,9 @@ const DailyHabits = () => {
                 });
             } else {
                 history.push('/');
-                // setAppbarDisplay('');
             }
         });
-        console.log(habits);
+        console.log("useeffect log: ", habits);
         return unsubscribe;
     }, []);
 
@@ -68,6 +65,14 @@ const DailyHabits = () => {
         setInput('');
     }
 
+    async function deleteHabit(del_habit) {
+        await db.collection('users')
+        .doc(currentUser.uid)
+        .collection('dailyHabits')
+        .doc(del_habit.id)
+        .delete()
+    }
+
     const [expandMe, setExpandMe] = useState(false);
     const [habitOverlay, setHabitOverlay] = useState();
 
@@ -78,27 +83,30 @@ const DailyHabits = () => {
             <ol className="habit__list">
                 <div className="daily__habits-input">
                     <div className="input__hint">
-                        <Input max={50} value={input} onChange={(e) => setInput(e.target.value)} />
+                        <Input maxLength={50} value={input} onChange={(e) => setInput(e.target.value)} />
                         <Hint direction="start">{!input && "Add a new habit"}</Hint>
                     </div>
                     <Button disabled={!input.length} onClick={addHabit}>Add Habit</Button>
                 </div>
                 {
                     habits.map((habit) => (
-                        <div 
+                        <div
                             key={habit.id}
                             className="daily__habit-wrapper"
-                            onClick={(e) => {
-                                // console.log("clicked");
-                                setHabitOverlay(habit);
-                                console.log(habitOverlay);
-                                setExpandMe(!expandMe);
-                                // console.log(expandMe);
-                            }}
                         >
-                            <HabitCard key={habit.id} title={habit.habit} />
-                        </div>
-                        
+                            <div
+                                onClick={(e) => {
+                                    setHabitOverlay(habit);
+                                    console.log("habit overlay: ", habitOverlay);
+                                    setExpandMe(!expandMe);
+                                }}
+                            >
+                                <HabitCard key={habit.id} title={habit.habit} />
+                            </div>
+                            <motion.div onClick={() => deleteHabit(habit)} className="delete__icon" whileHover={{ scale: 1.1 }} className="habit__card-delete" style={{ backgroundColor:"#c5221d", width: "20px", borderRadius: "5px", textAlign: "center", padding: "5px 10px 5px 10px"}}>
+                                <span style={{ color: "white", cursor: "pointer"}} className="k-icon k-i-delete"></span>
+                            </motion.div>
+                        </div>                        
                     ))
                 }
             </ol>

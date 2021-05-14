@@ -44,6 +44,7 @@ const FormTextArea = fieldRenderProps => {
 
 const OverlayCard = ({ user,habit, toggleExpand }) => {
     const [value, setValue] = useState([]);
+    const [description, setDescription] = useState([]);
     const [checked, setChecked] = useState(habit.habitHistory[habit.habitHistory.length - 1]);
 
     const onChangeLabel = (e) => {
@@ -51,7 +52,7 @@ const OverlayCard = ({ user,habit, toggleExpand }) => {
         console.log(value);
     };
 
-    const updateHabit = (e) => {
+    const updateHabitDone = (e) => {
         console.log("Current User: ", user);
         console.log("Current habit: ", habit);
         habit.habitHistory[habit.habitHistory.length - 1] = true;
@@ -67,7 +68,7 @@ const OverlayCard = ({ user,habit, toggleExpand }) => {
 
     async function handleSwitchChange(checked) {
         setChecked(checked);
-        await updateHabit();
+        await updateHabitDone();
         new Audio(pavlov).play();
         console.log("Habit Updated");
     }
@@ -89,6 +90,7 @@ const OverlayCard = ({ user,habit, toggleExpand }) => {
                             value={formRenderProps.valueGetter('habitTextarea')}
                             hint={'Hint: Describe your habit'}
                             component={FormTextArea}
+                            onChange={() => setDescription(formRenderProps.valueGetter('habitTextarea'))}
                         />
                     </FormElement>}
                 />
@@ -102,7 +104,6 @@ const OverlayCard = ({ user,habit, toggleExpand }) => {
 
             <div className="habit__buttons">
                 <Button className="save-habbit__button">Save Changes</Button>
-                <Button className="delete-habit__button">Delete Habit</Button>
             </div>
 
             <div className="habit__switch">

@@ -54,12 +54,6 @@
     border-radius: 10px;
 }
 
-.delete-habit__button {
-    background-color: #c5221d;
-    color: white;
-    border-radius: 10px;
-}
-
 .habit__switch {
     margin-top: 25px;
     text-align: center;

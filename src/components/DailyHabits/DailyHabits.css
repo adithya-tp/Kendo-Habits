@@ -51,3 +51,14 @@ ol.habit__list {
     border-radius: 10px;
     height: 60px;
 }
+
+.daily__habit-wrapper {
+    display: flex;
+    align-items: center;
+    height: min-content;
+}
+
+.habit__card-delete {
+    height: 30px;
+    margin-left: 25px;
+}
