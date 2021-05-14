@@ -62,7 +62,7 @@ const DailyHabits = () => {
             habit: input,
             habitDescription: '',
             habitLabels: ['all'],
-            habitHistory: [0],
+            habitHistory: [false],
             timestamp: firebase.firestore.FieldValue.serverTimestamp()
         })
         setInput('');
@@ -105,7 +105,7 @@ const DailyHabits = () => {
             {
                 expandMe && 
                 (
-                    <OverlayCard habit={habitOverlay} toggleExpand={setExpandMe} />
+                    <OverlayCard user={currentUser} habit={habitOverlay} toggleExpand={setExpandMe} />
                 )
             }
         </div>

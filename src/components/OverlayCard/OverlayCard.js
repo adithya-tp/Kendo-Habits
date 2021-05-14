@@ -7,6 +7,9 @@ import React, { useState } from 'react';
 import './OverlayCard.css';
 import { Button } from '@progress/kendo-react-buttons';
 import Switch from 'react-switch';
+import { db } from '../../firebase';
+import { useAuth } from '../../contexts/AuthContext';
+import pavlov from '../../pavlov/pavlov1.mp3';
 
 const FormTextArea = fieldRenderProps => {
     const {
@@ -39,7 +42,7 @@ const FormTextArea = fieldRenderProps => {
     );
 };
 
-const OverlayCard = ({ habit, toggleExpand }) => {
+const OverlayCard = ({ user,habit, toggleExpand }) => {
     const [value, setValue] = useState([]);
     const [checked, setChecked] = useState(habit.habitHistory[habit.habitHistory.length - 1]);
 
@@ -48,8 +51,25 @@ const OverlayCard = ({ habit, toggleExpand }) => {
         console.log(value);
     };
 
-    function handleSwitchChange(checked) {
+    const updateHabit = (e) => {
+        console.log("Current User: ", user);
+        console.log("Current habit: ", habit);
+        habit.habitHistory[habit.habitHistory.length - 1] = true;
+        
+        db.collection('users')
+        .doc(user.uid)
+        .collection('dailyHabits')
+        .doc(habit.id)
+        .update({
+            habitHistory: habit.habitHistory
+        })
+    }
+
+    async function handleSwitchChange(checked) {
         setChecked(checked);
+        await updateHabit();
+        new Audio(pavlov).play();
+        console.log("Habit Updated");
     }
 
     return (
