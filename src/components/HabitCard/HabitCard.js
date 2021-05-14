@@ -1,6 +1,5 @@
 import React from 'react';
 import { Card, CardHeader } from '@progress/kendo-react-layout';
-import { TextArea } from '@progress/kendo-react-labels';
 import './HabitCard.css';
 import { motion } from 'framer-motion';
 

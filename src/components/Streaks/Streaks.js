@@ -5,16 +5,12 @@ import { DateRangePicker } from '@progress/kendo-react-dateinputs';
 import './Streaks.css'
 import { useAuth } from '../../contexts/AuthContext';
 import HabitAppBar from '../HabitAppBar/HabitAppBar';
-import { useHistory } from 'react-router';
 
 function createHabitStreaks(data) {
-    // console.log(data);
     let cols = [];
     for(let i = 0; i < data.length * data[0].streak.length; i++) {
         let clr;
-        // console.log(i);
         clr = data[Math.floor(i / 7)].streak[i % 7] ? data[Math.floor(i / 7)].col : "#e0e0e0";
-        // console.log(clr);
         cols.push(<StreakTile key={i} color={clr} />)
     }
     return cols;
@@ -24,13 +20,12 @@ const Streaks = () => {
 
     const { currentUser } = useAuth();
     const [appbarDisplay, setAppbarDisplay] = useState('');
-    const history = useHistory();
 
     useEffect(() => {
         if(currentUser) {
             setAppbarDisplay(currentUser.displayName);
         }
-    });
+    }, [currentUser, appbarDisplay]);
 
     const [habitsDatePicker, setHabitsDatePicker] = useState({
         value: { 

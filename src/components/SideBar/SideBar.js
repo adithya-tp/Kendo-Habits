@@ -36,9 +36,7 @@ const sidebarOptions = [
 
 const SideBar = (props) => {
     const [expanded, setExpanded] = useState(true);
-    // const handleClick = () => {
-    //     setExpanded(!expanded);
-    // };
+
 
     const onSelect = (e) => {
         props.history.push(e.itemTarget.props.route);
@@ -54,10 +52,6 @@ const SideBar = (props) => {
     let selected = setSelectedItem(props.location.pathname);
     return (
         <div className="sidebar-dashboard">
-            {/* <div className="custom-toolbar">
-                <Button icon="menu" look="flat" onClick={handleClick} />
-                <span className="mail-box">Kendo Habits Menu</span>
-            </div> */}
             <Drawer
                 expanded={expanded}
                 position={"start"}

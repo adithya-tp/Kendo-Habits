@@ -8,14 +8,14 @@ import HabitCard from '../HabitCard/HabitCard';
 import './DailyHabits.css';
 import firebase from 'firebase';
 import { Button } from '@progress/kendo-react-buttons';
-import { useAuth } from '../../contexts/AuthContext';
 import { Dialog } from '@progress/kendo-react-dialogs';
+import { useHistory } from 'react-router';
 
 const DailyHabits = () => {
 
     const [currentUser, setCurrentUser] = useState();
     const [appbarDisplay, setAppbarDisplay] = useState('');
-    // const history = useHistory();
+    const history = useHistory();
     const [habits, setHabits] = useState([]);
     const [input, setInput] = useState('');
 
@@ -40,10 +40,12 @@ const DailyHabits = () => {
                     )
                 });
             } else {
-                setAppbarDisplay('');
+                history.push('/');
+                // setAppbarDisplay('');
             }
         });
         console.log(habits);
+        return unsubscribe;
     }, []);
 
     const addHabit = (e) => {
@@ -79,9 +81,9 @@ const DailyHabits = () => {
                             onClick={(e) => {
                                 // console.log("clicked");
                                 setHabitOverlay(habit);
-                                console.log(habitOverlay);
+                                // console.log(habitOverlay);
                                 setExpandMe(!expandMe);
-                                console.log(expandMe);
+                                // console.log(expandMe);
                             }}
                         >
                             <HabitCard key={habit.id} title={habit.habit} />

@@ -31,12 +31,12 @@ function App() {
                 exit="exit"
                 exact path="/" component={Home}
               />
-              <Route path="/login" component={SignIn} />
-              <Route path="/register" component={Register} />
+              <Route exact path="/login" component={SignIn} />
+              <Route exact path="/register" component={Register} />
               <SideBar>
-                <Route path="/user" component={DailyHabits} />
-                <Route path="/habit-streak" component={Streaks} />
-                <Route path="/garden" component={GardenPage} />
+                <Route exact path="/user" component={DailyHabits} />
+                <Route exact path="/habit-streak" component={Streaks} />
+                <Route exact path="/garden" component={GardenPage} />
               </SideBar>
             </Switch>
           </AnimatePresence>
