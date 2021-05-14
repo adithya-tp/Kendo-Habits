@@ -10,6 +10,7 @@ import firebase from 'firebase';
 import { Button } from '@progress/kendo-react-buttons';
 import { Dialog } from '@progress/kendo-react-dialogs';
 import { useHistory } from 'react-router';
+import OverlayCard from '../OverlayCard/OverlayCard';
 
 const DailyHabits = () => {
 
@@ -35,6 +36,9 @@ const DailyHabits = () => {
                             doc => ({
                                 id: doc.id,
                                 habit: doc.data().habit,
+                                habitDescription: doc.data().habitDescription,
+                                habitLabels: doc.data().habitLabels,
+                                habitHistory: doc.data().habitHistory,
                             })
                         )
                     )
@@ -50,12 +54,15 @@ const DailyHabits = () => {
 
     const addHabit = (e) => {
         e.preventDefault();
-        console.log(currentUser.uid);
+        // console.log(currentUser.uid);
         db.collection('users')
         .doc(currentUser.uid)
         .collection('dailyHabits')
         .add({
             habit: input,
+            habitDescription: '',
+            habitLabels: ['all'],
+            habitHistory: [0],
             timestamp: firebase.firestore.FieldValue.serverTimestamp()
         })
         setInput('');
@@ -81,7 +88,7 @@ const DailyHabits = () => {
                             onClick={(e) => {
                                 // console.log("clicked");
                                 setHabitOverlay(habit);
-                                // console.log(habitOverlay);
+                                console.log(habitOverlay);
                                 setExpandMe(!expandMe);
                                 // console.log(expandMe);
                             }}
@@ -95,9 +102,7 @@ const DailyHabits = () => {
             {
                 expandMe && 
                 (
-                    <Dialog className="overlay__card" title={habitOverlay.habit} onClose={() => setExpandMe(false)}>
-                        <h3>Description</h3>
-                    </Dialog>
+                    <OverlayCard habit={habitOverlay} toggleExpand={setExpandMe} />
                 )
             }
         </div>

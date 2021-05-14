@@ -1,0 +1,30 @@
+.overlay__card .k-dialog {
+    background-color: white;
+    min-height: 400px;
+    min-width: 400px;
+}
+
+.overlay__card .k-window-title {
+    font-family: 'Arvo';
+    justify-content: center;
+    border-bottom: 2px solid black;
+}
+
+.overlay__card-textarea {
+    display: flex;
+    /* justify-content: center; */
+}
+
+.overlay__card-textarea .k-textarea {
+    background-color: rgb(95, 173, 247);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 0;
+    width: 350px;
+}
+
+.overlay__card .k-textarea:hover {
+    background-color: #a5cbf7;
+    color: black;
+}
