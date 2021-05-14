@@ -55,7 +55,16 @@
 }
 
 .delete-habit__button {
-    background-color: rgb(197, 34, 29);
+    background-color: #c5221d;
     color: white;
     border-radius: 10px;
+}
+
+.habit__switch {
+    margin-top: 25px;
+    text-align: center;
+}
+
+.react-switch-bg {
+    align-items: center;
 }

@@ -5,8 +5,8 @@ import { Hint, Label } from '@progress/kendo-react-labels';
 import { MultiSelect } from '@progress/kendo-react-dropdowns';
 import React, { useState } from 'react';
 import './OverlayCard.css';
-import { AppBarSpacer } from '@progress/kendo-react-layout';
 import { Button } from '@progress/kendo-react-buttons';
+import Switch from 'react-switch';
 
 const FormTextArea = fieldRenderProps => {
     const {
@@ -26,7 +26,7 @@ const FormTextArea = fieldRenderProps => {
 
     return (
         <FieldWrapper>
-            <Label editorId={id} editorValid={valid} editorDisabled={disabled} optional={optional}>{label}</Label>
+            <Label style={{ fontFamily: 'Arvo'}} editorId={id} editorValid={valid} editorDisabled={disabled} optional={optional}>{label}</Label>
             <div className={'k-form-field-wrap'}>
                 <TextArea valid={valid} type={type} id={id} disabled={disabled} maxLength={max} rows={3} {...others} />
                 <div className="textarea__hints">  
@@ -41,10 +41,16 @@ const FormTextArea = fieldRenderProps => {
 
 const OverlayCard = ({ habit, toggleExpand }) => {
     const [value, setValue] = useState([]);
+    const [checked, setChecked] = useState(habit.habitHistory[habit.habitHistory.length - 1]);
 
     const onChangeLabel = (e) => {
         setValue([...e.value]);
+        console.log(value);
     };
+
+    function handleSwitchChange(checked) {
+        setChecked(checked);
+    }
 
     return (
         <Dialog className="overlay__card" title={habit.habit} onClose={() => toggleExpand(false)}>
@@ -71,13 +77,24 @@ const OverlayCard = ({ habit, toggleExpand }) => {
             <div className="multiselect__area">
                 <div>Habit Labels:</div>
                 <MultiSelect autocomplete="on" data={habit.habitLabels} onChange={onChangeLabel} value={value} />
-                {console.log(<MultiSelect data={habit.habitLabels} onChange={onChangeLabel} value={value} />)}
             </div>
             
 
             <div className="habit__buttons">
                 <Button className="save-habbit__button">Save Changes</Button>
                 <Button className="delete-habit__button">Delete Habit</Button>
+            </div>
+
+            <div className="habit__switch">
+                <Switch 
+                    height={60}
+                    width={300}
+                    offColor="#c5221d"
+                    offHandleColor="#f75a55"
+                    disabled={checked} 
+                    onChange={handleSwitchChange} 
+                    checked={checked}
+                />
             </div>
         </Dialog>
     );
