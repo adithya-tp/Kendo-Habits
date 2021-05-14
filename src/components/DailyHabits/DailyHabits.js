@@ -10,6 +10,7 @@ import { useHistory } from 'react-router';
 import OverlayCard from '../OverlayCard/OverlayCard';
 import { Hint } from '@progress/kendo-react-labels';
 import { motion } from 'framer-motion';
+import { Dialog } from '@progress/kendo-react-dialogs';
 
 const DailyHabits = () => {
 
@@ -18,6 +19,7 @@ const DailyHabits = () => {
     const history = useHistory();
     const [habits, setHabits] = useState([]);
     const [input, setInput] = useState('');
+    const [currentHabit, setCurrentHabit] = useState();
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged((authUser) => {
@@ -66,6 +68,8 @@ const DailyHabits = () => {
     }
 
     async function deleteHabit(del_habit) {
+        setWantDelete(false);
+
         await db.collection('users')
         .doc(currentUser.uid)
         .collection('dailyHabits')
@@ -73,8 +77,14 @@ const DailyHabits = () => {
         .delete()
     }
 
+    function deleteHabitWrapper(del_habit) {
+        setWantDelete(true);
+        setCurrentHabit(del_habit);
+    }
+
     const [expandMe, setExpandMe] = useState(false);
     const [habitOverlay, setHabitOverlay] = useState();
+    const [wantDelete, setWantDelete] = useState(false);
 
     return (
         <div className="habits_container">
@@ -103,7 +113,7 @@ const DailyHabits = () => {
                             >
                                 <HabitCard key={habit.id} title={habit.habit} />
                             </div>
-                            <motion.div onClick={() => deleteHabit(habit)} className="delete__icon" whileHover={{ scale: 1.1 }} className="habit__card-delete" style={{ backgroundColor:"#c5221d", width: "20px", borderRadius: "5px", textAlign: "center", padding: "5px 10px 5px 10px"}}>
+                            <motion.div onClick={() => deleteHabitWrapper(habit)} className="delete__icon" whileHover={{ scale: 1.1 }} className="habit__card-delete" style={{ backgroundColor:"#c5221d", width: "20px", borderRadius: "5px", textAlign: "center", padding: "5px 10px 5px 10px"}}>
                                 <span style={{ color: "white", cursor: "pointer"}} className="k-icon k-i-delete"></span>
                             </motion.div>
                         </div>                        
@@ -114,6 +124,18 @@ const DailyHabits = () => {
                 expandMe && 
                 (
                     <OverlayCard user={currentUser} habit={habitOverlay} toggleExpand={setExpandMe} />
+                )
+            }
+            {
+                wantDelete &&
+                (
+                    <Dialog title={"Do you want to delete this habit?"} onClose={() => setWantDelete(false)}>
+
+                        <div style={{ marginBottom: "20px" }} className="delete__habit-buttons">
+                            <Button className="delete__habit-del" onClick={() => deleteHabit(currentHabit)}>Yes, Delete</Button>
+                            <Button className="delete__habit-cancel" onClick={() => setWantDelete(false)}>Cancel</Button>
+                        </div>
+                    </Dialog>
                 )
             }
         </div>

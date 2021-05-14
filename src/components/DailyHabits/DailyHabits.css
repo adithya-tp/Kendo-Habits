@@ -62,3 +62,20 @@ ol.habit__list {
     height: 30px;
     margin-left: 25px;
 }
+
+.delete__habit-buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.delete__habit-del {
+    background-color: #22B573;
+    color: white;
+    border-radius: 10px;
+}
+
+.delete__habit-cancel { 
+    background-color: #3963ed;
+    color: white;
+    border-radius: 10px;
+}
