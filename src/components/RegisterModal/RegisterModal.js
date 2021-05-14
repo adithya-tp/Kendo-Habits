@@ -10,7 +10,7 @@ import './RegisterModal.css';
 import { useAuth } from '../../contexts/AuthContext';
 import { Link, useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEye } from '@fortawesome/free-solid-svg-icons'
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 import { motion } from 'framer-motion';
 
 const RegisterModal = () => {
@@ -19,6 +19,7 @@ const RegisterModal = () => {
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
     const [authErrorMessage, setAuthErrorMessage] = useState('');
+    const [eye, setEye] = useState("faEye");
     const history = useHistory();
 
     const { signup } = useAuth();
@@ -38,6 +39,21 @@ const RegisterModal = () => {
             });
         } else {
             setAuthErrorMessage("Empty Fields");
+        }
+    }
+
+    const togglePassword = () => {
+        toggleEye();
+        const togglePass = document.querySelector('#password');
+        const type = togglePass.getAttribute('type') === 'password' ? 'name' : 'password'
+        togglePass.setAttribute('type', type);
+    }
+
+    const toggleEye = () => {
+        if(eye === "faEye") {
+            setEye("faEyeSlash");
+        } else {
+            setEye("faEye");
         }
     }
 
@@ -81,8 +97,8 @@ const RegisterModal = () => {
                                 component={FormInput}
                                 validator={passwordValidator}
                             />
-                            <motion.div whileTap={{ scale: 0.9 }} className="register__eye" style={{ borderRadius: "10px", boxShadow: "-2px 3px black", marginLeft: "30px", cursor: "pointer", margin: "20px 0 0 40px", padding:"10px 10px", backgroundColor:"#FDF074"}}>
-                                <FontAwesomeIcon size='3x' icon={faEye} />
+                            <motion.div onClick={togglePassword} whileTap={{ scale: 0.9 }} className="register__eye" style={{ borderRadius: "10px", boxShadow: "-2px 3px black", marginLeft: "30px", cursor: "pointer", margin: "20px 0 0 40px", padding:"10px 10px", backgroundColor:"#FDF074"}}>
+                                <FontAwesomeIcon size='3x' icon={eye === "faEye" ? faEye : faEyeSlash} />
                             </motion.div>
                         </div>
                         <div className="k-form-buttons">
