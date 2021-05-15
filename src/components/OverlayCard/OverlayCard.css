@@ -16,7 +16,6 @@
     border: none;
     border-radius: 15px;
     padding: 10px 0;
-    width: 350px;
 }
 
 .overlay__card .k-textarea:hover {
@@ -25,7 +24,7 @@
 }
 
 .multiselect__area {
-    margin-top: 170px;
+    margin-top: 20px;
 }
 
 .k-window-action {
@@ -61,4 +60,9 @@
 
 .react-switch-bg {
     align-items: center;
+}
+
+.textarea__hints .k-form-hint {
+    position: absolute;
+    right: 30px;
 }

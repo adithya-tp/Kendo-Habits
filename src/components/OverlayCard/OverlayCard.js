@@ -8,7 +8,6 @@ import './OverlayCard.css';
 import { Button } from '@progress/kendo-react-buttons';
 import Switch from 'react-switch';
 import { db } from '../../firebase';
-import { useAuth } from '../../contexts/AuthContext';
 import pavlov from '../../pavlov/pavlov1.mp3';
 
 const FormTextArea = fieldRenderProps => {
@@ -79,8 +78,6 @@ const OverlayCard = ({ user,habit, toggleExpand }) => {
                 <Form
                     initialValues={{habitTextarea: ''}}
                     render={formRenderProps => <FormElement style={{
-                        width: 250,
-                        position: 'absolute'
                     }}>
                         <Field
                             id={'habitTextarea'}
