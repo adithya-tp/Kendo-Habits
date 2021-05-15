@@ -25,8 +25,8 @@ const DailyHabits = () => {
         const unsubscribe = auth.onAuthStateChanged((authUser) => {
             if(authUser) {
                 setCurrentUser(authUser);
-
                 setAppbarDisplay(authUser.displayName);
+                
                 db.collection('users')
                 .doc(authUser.uid)
                 .collection('dailyHabits')
@@ -62,6 +62,7 @@ const DailyHabits = () => {
             habitDescription: '',
             habitLabels: ['all'],
             habitHistory: new Array(200).fill(false),
+            habitCol: Math.floor(Math.random()*16777215).toString(16),
             timestamp: firebase.firestore.FieldValue.serverTimestamp()
         })
         setInput('');
