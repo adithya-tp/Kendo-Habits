@@ -15,20 +15,18 @@
     height: 100%;
 }
 
-.habbits__middle {
-
-}
-
 .date__hover {
     text-align: center;
 }
 
 .title__middle {
     width: 100%;
-    margin: 0 0 20px 0; 
+    height: 100px;
+    /* margin: 0 0 20px 0;  */
     font-family: 'Arvo';
     display: flex;
     justify-content: space-between;
+    justify-self: flex-start;
 }
 
 .title__middle-habit {

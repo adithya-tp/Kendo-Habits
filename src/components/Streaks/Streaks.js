@@ -50,17 +50,6 @@ const Streaks = () => {
         return unsubscribe;
     }, []);
 
-    // const [habitsDatePicker, setHabitsDatePicker] = useState({
-    //     value: { 
-    //         start: new Date(2021, 5, 2), 
-    //         end: new Date(2021, 5, 9)
-    //     }
-    // });
-
-    // const habitsDateChange = (event) => {
-    //     setHabitsDatePicker({ value: event.target.value })
-    // }
-
     function createHabitStreaks(data) {
         let cols = [];
     
@@ -123,19 +112,6 @@ const Streaks = () => {
                             </PanelBarItem>
                         </PanelBar>
                     </div>
-                    {/* <div className="habits__datepicker-card">
-                        <Card>
-                            <div className="habits__datepicker">
-                                <div className="datepicker__header">
-                                    <h3>Habit Timeline</h3>
-                                </div>
-                                <DateRangePicker
-                                    value={habitsDatePicker.value}
-                                    onChange={habitsDateChange}
-                                />
-                            </div>
-                        </Card>
-                    </div> */}
                 </div>
             </div>
         </>
