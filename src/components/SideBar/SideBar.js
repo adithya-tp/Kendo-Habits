@@ -17,7 +17,7 @@ const sidebarOptions = [
         separator: true,
     },
     {
-        text: "Your Habit Streaks",
+        text: "Your Latest Streaks",
         icon: "k-i-stumble-upon-box",
         route: "/habit-streak"
     },
