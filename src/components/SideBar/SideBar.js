@@ -25,8 +25,16 @@ const sidebarOptions = [
         separator: true,
     },
     {
+        text: "Your Habits: Visualized",
+        icon: "k-i-graph",
+        route: "/visualizations"
+    },
+    {
+        separator: true,
+    },
+    {
         text: "Your Garden",
-        icon: "k-i-tri-state-null",
+        icon: "k-i-snap-grid",
         route: "/garden"
     },
     {

@@ -11,6 +11,7 @@ import Streaks from './components/Streaks/Streaks';
 import { AuthProvider } from './contexts/AuthContext';
 import './App.css';
 import SideBar from './components/SideBar/SideBar';
+import VizPage from './components/VizPage/VizPage';
 
 function App() {
   const location = useLocation();
@@ -36,6 +37,7 @@ function App() {
               <SideBar>
                 <Route exact path="/user" component={DailyHabits} />
                 <Route exact path="/habit-streak" component={Streaks} />
+                <Route exact path="/visualizations" component={VizPage} />
                 <Route exact path="/garden" component={GardenPage} />
               </SideBar>
             </Switch>
