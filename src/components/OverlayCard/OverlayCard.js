@@ -45,23 +45,27 @@ const OverlayCard = ({ user,habit, toggleExpand }) => {
     const [value, setValue] = useState([]);
     const [description, setDescription] = useState([]);
     const [checked, setChecked] = useState(habit.habitHistory[habit.habitHistory.length - 1]);
+    const today = new Date(Date.now());
 
     const onChangeLabel = (e) => {
         setValue([...e.value]);
         console.log(value);
     };
 
-    const updateHabitDone = (e) => {
+    const updateHabitDone = () => {
         console.log("Current User: ", user);
         console.log("Current habit: ", habit);
         habit.habitHistory[habit.habitHistory.length - 1] = true;
+        habit.habitCounts[today.getMonth()] += 1;
+        console.log(habit.habitCounts)
         
         db.collection('users')
         .doc(user.uid)
         .collection('dailyHabits')
         .doc(habit.id)
         .update({
-            habitHistory: habit.habitHistory
+            habitHistory: habit.habitHistory,
+            habitCounts: habit.habitCounts,
         })
     }
 

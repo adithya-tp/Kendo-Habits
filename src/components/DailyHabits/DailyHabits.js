@@ -41,6 +41,7 @@ const DailyHabits = () => {
                                 id: doc.id,
                                 habit: doc.data().habit,
                                 habitDescription: doc.data().habitDescription,
+                                habitCounts: doc.data().habitCounts,
                                 habitLabels: doc.data().habitLabels,
                                 habitHistory: doc.data().habitHistory,
                             })
