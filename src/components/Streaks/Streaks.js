@@ -3,8 +3,9 @@ import StreakTile from '../StreakTile/StreakTile';
 import { Card, PanelBar, PanelBarItem } from '@progress/kendo-react-layout';
 import { DateRangePicker } from '@progress/kendo-react-dateinputs';
 import './Streaks.css'
-import { useAuth } from '../../contexts/AuthContext';
 import HabitAppBar from '../HabitAppBar/HabitAppBar';
+import { auth, db } from '../../firebase';
+import { useHistory } from 'react-router';
 
 function createHabitStreaks(data) {
     let cols = [];
@@ -18,19 +19,28 @@ function createHabitStreaks(data) {
 
 const Streaks = () => {
 
-    const { currentUser } = useAuth();
     const [appbarDisplay, setAppbarDisplay] = useState('');
+    const [currentUser, setCurrentUser] = useState();
+    const history = useHistory();
 
     useEffect(() => {
-        if(currentUser) {
-            setAppbarDisplay(currentUser.displayName);
-        }
-    }, [currentUser, appbarDisplay]);
+        const unsubscribe = auth.onAuthStateChanged((authUser) => {
+            if(authUser) {
+                setCurrentUser(authUser);
+
+                setAppbarDisplay(authUser.displayName);
+                
+            } else {
+                history.push('/');
+            }
+        });
+        return unsubscribe;
+    }, []);
 
     const [habitsDatePicker, setHabitsDatePicker] = useState({
         value: { 
             start: new Date(2021, 5, 2), 
-            end: new Date(2021, 5, 9) 
+            end: new Date(2021, 5, 9)
         }
     });
 
@@ -38,7 +48,7 @@ const Streaks = () => {
         setHabitsDatePicker({ value: event.target.value })
     }
 
-    const[habitsData, setHabitsData] = useState([
+    const [habitsData, setHabitsData] = useState([
         {
             col: "#ff0000",
             streak: [1, 1, 1, 1, 0, 0, 0]

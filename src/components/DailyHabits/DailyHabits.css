@@ -12,7 +12,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* background-color: white; */
     min-height: 100vh;
     width: 80vw;
 }
