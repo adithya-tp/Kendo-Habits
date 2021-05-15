@@ -20,7 +20,6 @@ const Landscape = () => {
     }
     tiles[1][4] = 'tree_four';
     tiles[0][0] = 'tree_one';
-    console.log(tiles);
     const yOffset = (100 / WORLD_SIZE) * (TILE_ASPECT_RATIO / 2.6);
 
     return (
