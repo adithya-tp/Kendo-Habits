@@ -23,6 +23,7 @@ const DailyHabits = () => {
     const [habits, setHabits] = useState([]);
     const [input, setInput] = useState('');
     const [currentHabit, setCurrentHabit] = useState();
+    const [premium, setPremium] = useState(false);
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged((authUser) => {
@@ -57,6 +58,11 @@ const DailyHabits = () => {
     }, []);
 
     const addHabit = (e) => {
+        setInput('');
+        if(habits.length == 5) {
+            setPremium(true);
+            return;
+        }
         e.preventDefault();
         let habitHistory = new Array(200).fill(false);
         for(let i = 0; i < 199; i++) {
@@ -102,7 +108,6 @@ const DailyHabits = () => {
             habitCounts: habitCounts,
             timestamp: firebase.firestore.FieldValue.serverTimestamp()
         })
-        setInput('');
     }
 
     async function deleteHabit(del_habit) {
@@ -176,6 +181,20 @@ const DailyHabits = () => {
                     </Dialog>
                 )
             }
+
+            {
+                premium &&
+                (
+                    <Dialog title={"Want more habits? Upgrade to premium 🤩!"} onClose={() => setPremium(false)}>
+                    
+                    <div style={{ marginBottom: "20px" }} className="delete__habit-buttons">
+                        <Button style={{ backgroundColor: "#36E46B", borderRadius: "10px" }} onClick={() => setPremium(false)}>Upgrade to Kendo-Pro!</Button>
+                    </div>
+                    </Dialog>
+                )
+            }
+
+
         </div>
     );
 }
