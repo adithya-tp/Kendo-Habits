@@ -54,6 +54,13 @@ const DailyHabits = () => {
 
     const addHabit = (e) => {
         e.preventDefault();
+        let habitHistory = new Array(200).fill(false);
+        for(let i = 0; i < 199; i++) {
+            if(Math.random() < 0.7) {
+                habitHistory[i] = true;
+            }
+        }
+
         db.collection('users')
         .doc(currentUser.uid)
         .collection('dailyHabits')
@@ -61,7 +68,7 @@ const DailyHabits = () => {
             habit: input,
             habitDescription: '',
             habitLabels: ['all'],
-            habitHistory: new Array(200).fill(false),
+            habitHistory: habitHistory,
             habitCol: Math.floor(Math.random()*16777215).toString(16),
             timestamp: firebase.firestore.FieldValue.serverTimestamp()
         })

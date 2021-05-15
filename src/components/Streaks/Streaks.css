@@ -3,7 +3,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 93vh;
+    min-height: 93vh;
 }
 
 
@@ -24,24 +24,28 @@
 }
 
 .title__middle {
-    margin: 20px 0;
+    width: 100%;
+    margin: 0 0 20px 0; 
     font-family: 'Arvo';
-    text-align: center;
-    border-bottom: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+}
+
+.title__middle-habit {
+    margin-left: 50px;
+}
+
+.title__middle-date {
+    margin-left: -10px;
 }
 
 .streaks__right {
     margin-right: 20px;
-    padding: 40px 0 30px 0;
+    padding: 20px 0 30px 0;
     border-radius: 10px;
     background-color: #5A2727;
 
     min-width: 20vw;
-    height: fit-content;
-    align-self: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
 }
 
 .habit__streaks {

@@ -7,24 +7,11 @@ import HabitAppBar from '../HabitAppBar/HabitAppBar';
 import { auth, db } from '../../firebase';
 import { useHistory } from 'react-router';
 
-function createHabitStreaks(data) {
-    let cols = [];
-
-    if(data.length) {
-        let div = data[0].streak.length;
-        for(let i = 0; i < data.length * data[0].streak.length; i++) {
-            let clr;
-            clr = data[Math.floor(i / div)].streak[i % div] ? data[Math.floor(i / div)].col : "#e0e0e0";
-            cols.push(<StreakTile h={Math.max(10, 100 - 2 * div)} w={Math.max(10, 100 - 2 * div)} key={i} color={clr} />)
-        }
-    }
-    return cols;
-};
-
 const Streaks = () => {
 
     const [appbarDisplay, setAppbarDisplay] = useState('');
     const [currentUser, setCurrentUser] = useState();
+    const [hoverHabit, setHoverHabit] = useState('Hover to see habit name');
     const [habitsData, setHabitsData] = useState([]);
     const history = useHistory();
 
@@ -45,7 +32,7 @@ const Streaks = () => {
                             {
                                 var last_seven = doc.data().habitHistory;
                                 last_seven = [...last_seven]
-                                last_seven = last_seven.slice(Math.max(last_seven.length - 7, 0));
+                                last_seven = last_seven.slice(Math.max(last_seven.length - 10, 0));
 
                                 return({
                                     id: doc.id,
@@ -64,16 +51,37 @@ const Streaks = () => {
         return unsubscribe;
     }, []);
 
-    const [habitsDatePicker, setHabitsDatePicker] = useState({
-        value: { 
-            start: new Date(2021, 5, 2), 
-            end: new Date(2021, 5, 9)
-        }
-    });
+    // const [habitsDatePicker, setHabitsDatePicker] = useState({
+    //     value: { 
+    //         start: new Date(2021, 5, 2), 
+    //         end: new Date(2021, 5, 9)
+    //     }
+    // });
 
-    const habitsDateChange = (event) => {
-        setHabitsDatePicker({ value: event.target.value })
-    }
+    // const habitsDateChange = (event) => {
+    //     setHabitsDatePicker({ value: event.target.value })
+    // }
+
+    function createHabitStreaks(data) {
+        let cols = [];
+    
+        if(data.length) {
+            let div = data[0].streak.length;
+            for(let i = 0; i < data.length * data[0].streak.length; i++) {
+                let clr;
+                clr = data[Math.floor(i / div)].streak[i % div] ? data[Math.floor(i / div)].col : "#e0e0e0";
+                cols.push(
+                    <div  
+                        onMouseOver={() => setHoverHabit(data[Math.floor(i / div)].habit)}
+                        onMouseOut={() => setHoverHabit('Hover to see habit name')}
+                    >
+                        <StreakTile h={Math.max(10, 100 - 2 * div)} w={Math.max(10, 100 - 2 * div)} key={i} color={clr} />
+                    </div>
+                )
+            }
+        }
+        return cols;
+    };
 
     return (
         <>
@@ -81,12 +89,14 @@ const Streaks = () => {
             <div className="streaks__main">
                 <div className="streaks__middle">
                     <div className="title__middle">
-                        <h1>Your Habit Streaks</h1>
+                        <div className="title__middle-habit">
+                            <h2 style={{borderBottom: "1px solid black"}}>{hoverHabit}</h2>
+                        </div>
+                        <div className="title__middle-date">
+                            <h2>Date: May 1, 2020</h2>
+                        </div>
                     </div>
                     <div className="habits__middle">
-                        <div className="date__hover">
-                            <h2>May 1</h2>
-                        </div>
                         <div 
                             className="habit__streaks"
                             style={{
@@ -113,7 +123,7 @@ const Streaks = () => {
                             </PanelBarItem>
                         </PanelBar>
                     </div>
-                    <div className="habits__datepicker-card">
+                    {/* <div className="habits__datepicker-card">
                         <Card>
                             <div className="habits__datepicker">
                                 <div className="datepicker__header">
@@ -125,7 +135,7 @@ const Streaks = () => {
                                 />
                             </div>
                         </Card>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </>

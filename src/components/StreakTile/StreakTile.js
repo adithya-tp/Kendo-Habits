@@ -12,7 +12,7 @@ const StreakTile = ( {color, h, w} ) => {
                 height: h, 
                 width: w}}
         >
-            
+
         </motion.div>
     );
 }
