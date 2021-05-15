@@ -1,16 +1,19 @@
 import { Input } from '@progress/kendo-react-inputs';
+import { Button } from '@progress/kendo-react-buttons';
+import { Hint } from '@progress/kendo-react-labels';
+import { Dialog } from '@progress/kendo-react-dialogs';
+import { firstDayOfMonth, lastDayOfMonth } from '@progress/kendo-date-math';
+
+
 import React, { useEffect, useState } from 'react';
 import { auth, db } from '../../firebase';
 import HabitAppBar from '../HabitAppBar/HabitAppBar';
 import HabitCard from '../HabitCard/HabitCard';
 import './DailyHabits.css';
 import firebase from 'firebase';
-import { Button } from '@progress/kendo-react-buttons';
 import { useHistory } from 'react-router';
 import OverlayCard from '../OverlayCard/OverlayCard';
-import { Hint } from '@progress/kendo-react-labels';
 import { motion } from 'framer-motion';
-import { Dialog } from '@progress/kendo-react-dialogs';
 
 const DailyHabits = () => {
 
@@ -61,6 +64,31 @@ const DailyHabits = () => {
             }
         }
 
+        const daysCumSum = [];
+        const today = new Date(Date.now());
+        const year_start = new Date(today.getFullYear(), 0, 1);
+        var curr_date = year_start;
+        while(curr_date.getMonth() < today.getMonth()) {
+            let month_start = firstDayOfMonth(curr_date);
+            let month_end = lastDayOfMonth(curr_date);
+            daysCumSum.push(month_end.getDate() - month_start.getDate() + 1);
+            curr_date = new Date(curr_date.getFullYear(), curr_date.getMonth() + 1, 1);
+        }
+        daysCumSum.push(today.getDate());
+        daysCumSum.push(0);
+        for(let i = daysCumSum.length - 2; i >= 0; i--) {
+            daysCumSum[i] += daysCumSum[i + 1];
+        }
+
+        var habitCounts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        var hh_copy = [...habitHistory];
+        for(let i = 0; i < daysCumSum.length - 1; i++) {
+            var curr_slice = hh_copy.slice(hh_copy.length - daysCumSum[i], hh_copy.length - daysCumSum[i + 1]);
+            habitCounts[i] = curr_slice.reduce((a, b) => a + b, 0);
+        }
+        // console.log(daysCumSum);
+        // console.log(habitCounts);
+
         db.collection('users')
         .doc(currentUser.uid)
         .collection('dailyHabits')
@@ -70,6 +98,7 @@ const DailyHabits = () => {
             habitLabels: ['all'],
             habitHistory: habitHistory,
             habitCol: Math.floor(Math.random()*16777215).toString(16),
+            habitCounts: habitCounts,
             timestamp: firebase.firestore.FieldValue.serverTimestamp()
         })
         setInput('');

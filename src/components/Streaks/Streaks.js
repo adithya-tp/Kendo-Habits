@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import StreakTile from '../StreakTile/StreakTile';
-import { Card, PanelBar, PanelBarItem } from '@progress/kendo-react-layout';
-import { DateRangePicker } from '@progress/kendo-react-dateinputs';
+import { PanelBar, PanelBarItem } from '@progress/kendo-react-layout';
 import './Streaks.css'
 import HabitAppBar from '../HabitAppBar/HabitAppBar';
 import { auth, db } from '../../firebase';
@@ -72,6 +71,7 @@ const Streaks = () => {
                 clr = data[Math.floor(i / div)].streak[i % div] ? data[Math.floor(i / div)].col : "#e0e0e0";
                 cols.push(
                     <div  
+                        key={i}
                         onMouseOver={() => setHoverHabit(data[Math.floor(i / div)].habit)}
                         onMouseOut={() => setHoverHabit('Hover to see habit name')}
                     >
