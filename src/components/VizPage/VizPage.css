@@ -3,3 +3,13 @@
     padding-bottom: 200px;
     min-height: 100vh;
 }
+
+.area__chart {
+    width: 30vw;
+    height: 20vh;
+    margin: 20px;
+}
+
+.k-chart-surface > svg {
+    border-radius: 10px;
+}
