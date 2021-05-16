@@ -66,7 +66,7 @@ const DailyHabits = () => {
         e.preventDefault();
         let habitHistory = new Array(200).fill(false);
         for(let i = 0; i < 199; i++) {
-            if(Math.random() < 0.7) {
+            if(Math.random() < 0.8) {
                 habitHistory[i] = true;
             }
         }
@@ -88,13 +88,26 @@ const DailyHabits = () => {
         }
 
         var habitCounts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        var longestStreaks = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        var globalLongestStreak = 0;
+        var currStreak = 0;
         var hh_copy = [...habitHistory];
         for(let i = 0; i < daysCumSum.length - 1; i++) {
             var curr_slice = hh_copy.slice(hh_copy.length - daysCumSum[i], hh_copy.length - daysCumSum[i + 1]);
             habitCounts[i] = curr_slice.reduce((a, b) => a + b, 0);
-        }
-        // console.log(daysCumSum);
-        // console.log(habitCounts);
+            var longest_streak = 0;
+            var curr_streak = 0;
+            for(let j = 0; j < curr_slice.length - 1; j++) {
+                if(curr_slice[j]) {
+                    curr_streak++;
+                } else {
+                    longest_streak = Math.max(longest_streak, curr_streak);
+                    curr_streak = 0;
+                }
+                longestStreaks[i] = longest_streak;
+                globalLongestStreak = Math.max(longest_streak, globalLongestStreak);
+            }
+        }        
 
         db.collection('users')
         .doc(currentUser.uid)
@@ -106,6 +119,9 @@ const DailyHabits = () => {
             habitHistory: habitHistory,
             habitCol: Math.floor(Math.random()*16777215).toString(16),
             habitCounts: habitCounts,
+            longestStreaks: longestStreaks,
+            currStreak: curr_streak,
+            longestStreak: globalLongestStreak,
             timestamp: firebase.firestore.FieldValue.serverTimestamp()
         })
     }

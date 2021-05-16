@@ -1,15 +1,32 @@
 .viz__page {
     background-color: #FDF074;
     padding-bottom: 200px;
-    min-height: 100vh;
+    min-height: 80vh;
 }
 
-.area__chart {
+.charts__wrapper {
+    display: flex;
+
+}
+
+.k-chart-surface > svg {
+    border-radius: 10px;
+}
+
+.line__chart {
     width: 30vw;
     height: 20vh;
     margin: 20px;
 }
 
-.k-chart-surface > svg {
-    border-radius: 10px;
+.longest__streaks {
+    width: 30vw;
+    height: 20vh;
+    margin: 20px;
+}
+
+.current__streaks {
+    width: 30vw;
+    height: 20vh;
+    margin: 20px;
 }
