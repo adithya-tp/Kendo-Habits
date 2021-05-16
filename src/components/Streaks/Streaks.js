@@ -31,7 +31,7 @@ const Streaks = () => {
                             {
                                 var last_seven = doc.data().habitHistory;
                                 last_seven = [...last_seven]
-                                last_seven = last_seven.slice(Math.max(last_seven.length - 10, 0));
+                                last_seven = last_seven.slice(Math.max(last_seven.length - 7, 0));
 
                                 return({
                                     id: doc.id,

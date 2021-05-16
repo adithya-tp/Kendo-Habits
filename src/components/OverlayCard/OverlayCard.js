@@ -65,7 +65,6 @@ const OverlayCard = ({ user, habit, toggleExpand }) => {
 
     const updateHabitDone = () => {
 
-        toggleExpand(false);
         habit.habitHistory[habit.habitHistory.length - 1] = true;
         habit.habitCounts[today.getMonth()] += 1;
         
