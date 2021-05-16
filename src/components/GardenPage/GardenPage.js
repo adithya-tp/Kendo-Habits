@@ -13,7 +13,7 @@ const GardenPage = () => {
                 <Garden />
                 <div className="mini__garden">
                     {/* fetch x, y, and garden_item_type from firebase */}
-                    <GardenMini itemPosition={[4, 7]} />
+                    <GardenMini itemPosition={[[0, 0], [1, 4], [2, 2]]} />
                 </div>
             </div>
         </DndProvider>

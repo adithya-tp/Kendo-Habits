@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import GardenItem from './GardenItem';
 import Square from './Square';
 import './GardenMini.css';
@@ -8,30 +8,63 @@ const GardenMini = ({ itemPosition }) => {
     
     const [coordinates, setCoordinates] = useState([...itemPosition]);
     const [squares, setSquares] = useState([]);
+    const square_ref = useRef(null);
 
     useEffect(() => {
+        console.log(coordinates);
         let tempSquares = [];
-        let [itemX, itemY] = coordinates;
-        console.log(itemX, itemY);
-        for (let i = 0; i < 100; i++) {
-            const x = i % 10;
-            const y = Math.floor(i / 10);
-            const isitemHere = x === itemX && y === itemY;
-            const piece = isitemHere ? <GardenItem /> : null;
+        var hasItem = Array(100).fill(false);
+        coordinates.forEach((coordinate) => {
+            var temp__coordinates = [coordinate[1], 9 - coordinate[0]];
+            hasItem[temp__coordinates[0] * 10 + temp__coordinates[1]] = true;
+        });
 
-
-            tempSquares.push(
-                <div onClick={() => handleSquareClick(x, y)} key={i} style={{ cursor: 'pointer', width: '10%', height: '10%' }}>
-                    <Square>{piece}</Square>
-                </div>
-            );
+        for(let x = 0; x < 10; x++) {
+            for(let y = 0; y < 10; y++) {
+                const piece = hasItem[10 * x + y] ? <GardenItem /> : null;
+                tempSquares.push(
+                    <div onClick={(e) => handleSquareClick(e, hasItem[10 * x + y], x, y)} key={10 * x + y} style={{ cursor: 'pointer', width: '10%', height: '10%' }}>
+                        <Square>{piece}</Square>
+                    </div>
+                );
+            }
         }
-        setSquares([...tempSquares]);
-    }, [coordinates]);
 
-    const handleSquareClick = (x, y) => {
-        setCoordinates([x, y]);
+        
+        // for (let i = 0; i < 100; i++) {
+        //     const x = i % 10;
+        //     const y = Math.floor(i / 10);
+        //     const isitemHere = x === itemX && y === itemY;
+        //     const piece = isitemHere ? <GardenItem style={{ zIndex: 100}} onClick={() => handleItemClick()} /> : null;
+            
+
+        //     tempSquares.push(
+        //         <div onClick={() => handleSquareClick(x, y)} key={i} style={{ cursor: 'pointer', width: '10%', height: '10%' }}>
+        //             <Square>{piece}</Square>
+        //         </div>
+        //     );
+        // }
+        setSquares([...tempSquares]);
+    }, []);
+
+    const handleSquareClick = function(event, hasItem, x, y) {
+        // console.log(square_ref.current);
+        if(square_ref.current != null) {
+            square_ref.current.style.backgroundColor = 'white';
+        }
+
+        if(hasItem) {
+            event.target.style.backgroundColor = 'black';
+            square_ref.current = event.target;
+            // console.log(square_ref.current);
+        } else {
+            square_ref.current = null;
+        }
     }
+
+    // const handleSquareClick = (x, y) => {
+    //     setCoordinates([x, y]);
+    // }
 
     return (
         <div className="garden__mini-grid"
