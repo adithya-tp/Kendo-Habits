@@ -6,7 +6,7 @@
 
 .charts__wrapper {
     display: flex;
-
+    justify-content: space-around;
 }
 
 .k-chart-surface > svg {

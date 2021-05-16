@@ -103,8 +103,9 @@ const VizPage = () => {
                     <div className="line__chart">
                         <Card
                             style={{
-                                minHeight: 400,
-                                paddingInline: "10px",
+                                minHeight: 200,
+                                width: 530,
+                                padding: "0 10px 20px 10px",
                                 borderRadius: "15px",
                             }}
                         >
@@ -115,7 +116,8 @@ const VizPage = () => {
                             }}>Monthly Habit Patterns</h2>
                             <Chart
                                 style={{
-                                    height:350,
+                                    height:300,
+                                    width:500,
                                 }}
                             >
                                 <ChartLegend position="top" orientation="horizontal" />
