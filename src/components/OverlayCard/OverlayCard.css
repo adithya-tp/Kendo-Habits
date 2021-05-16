@@ -66,3 +66,11 @@
     position: absolute;
     right: 30px;
 }
+
+.k-multiselect .k-multiselect-wrap .k-button {
+    background-color: #FDF074;
+}
+
+.k-animation-container{
+    z-index: 10003;
+}
