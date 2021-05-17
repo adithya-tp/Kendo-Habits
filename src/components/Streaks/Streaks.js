@@ -139,7 +139,7 @@ const Streaks = ({ allLabels }) => {
                 <div className="streaks__right">
                     <div className="habits__panelbar">
                         <PanelBar>
-                            <PanelBarItem expanded={true} title="Habit Categories">
+                            <PanelBarItem expanded={true} selected={true} title="Habit Categories">
                                 {
                                     labels
                                 }
