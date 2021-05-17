@@ -121,11 +121,14 @@ const Streaks = ({ allLabels }) => {
                             {
                                 createHabitStreaks(habitsData)
                             }
-
-                            { label }
                         </div>
                     </div>
+
+                    <div style={{ boxShadow: "-0.1rem 0.15rem 0rem rgba(0, 0, 0, 0.3)", position: "relative", marginTop: "5px", backgroundColor: "white", padding: "10px", borderRadius: "5px"}}>
+                        <h3 style={{fontFamily: 'Arvo'}}>Selected Label : {label} </h3>
+                    </div>
                 </div>
+
                 <div className="streaks__right">
                     <div className="habits__panelbar">
                         <PanelBar>
