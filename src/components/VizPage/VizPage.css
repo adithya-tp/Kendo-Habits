@@ -7,6 +7,7 @@
 .charts__wrapper {
     display: flex;
     justify-content: space-between;
+    min-height: 90vh;
 }
 
 .k-chart-surface > svg {
@@ -14,19 +15,27 @@
 }
 
 .line__chart {
-    width: 30vw;
-    height: 20vh;
-    margin: 20px;
+    position: relative;
+    margin: 20px 0 20px 20px;
+    /* width: 46vw; */
+}
+
+.line__chart .k-card {
+
+    /* width: 100%; */
+    /* width: 23vw; */
 }
 
 .longest__streaks {
-    width: 30vw;
-    height: 20vh;
+    position: relative;
+    max-width: 30vw;
+    min-height: 20vh;
     margin: 20px;
 }
 
 .current__streaks {
-    width: 30vw;
-    height: 20vh;
+    position: relative;
+    max-width: 30vw;
+    min-height: 20vh;
     margin: 20px;
 }

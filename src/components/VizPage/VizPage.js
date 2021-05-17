@@ -48,7 +48,7 @@ const VizPage = () => {
                     )
                 });
 
-                console.log(habitsData);
+                // console.log(habitsData);
             } else {
                 history.push('/');
             }
@@ -65,6 +65,15 @@ const VizPage = () => {
         return (
             <span>
                 Longest Streak: {value.current}
+            </span>
+        );
+    };
+
+    const tooltipRenderCurrent = ({ point }) => {
+        const { value } = point;
+        return (
+            <span>
+                Current Streak: {value.current}
             </span>
         );
     };
@@ -103,10 +112,10 @@ const VizPage = () => {
                     <div className="line__chart">
                         <Card
                             style={{
-                                minHeight: 200,
-                                width: 530,
                                 padding: "0 10px 20px 10px",
                                 borderRadius: "15px",
+                                width: "30vw",
+                                height: "35vh"
                             }}
                         >
                             <h2 style={{
@@ -114,12 +123,7 @@ const VizPage = () => {
                                 textAlign: 'center',
                                 marginTop: '10px'
                             }}>Monthly Habit Patterns</h2>
-                            <Chart
-                                style={{
-                                    height:300,
-                                    width:500,
-                                }}
-                            >
+                            <Chart>
                                 <ChartLegend position="top" orientation="horizontal" />
                                 <ChartCategoryAxis>
                                     <ChartCategoryAxisItem categories={months} startAngle={45} />
@@ -145,7 +149,6 @@ const VizPage = () => {
                         <Card
                             style={{
                                 borderRadius: "15px",
-                                minHeight:0,
                                 padding: "5px 10px 20px 10px",
                             }}
                         >
@@ -189,17 +192,57 @@ const VizPage = () => {
                             }
                         </Card>
                     </div>
-                </div>
 
-                {/* <div className="current__streaks">
-                    <Chart
-                        style={{
-                            height:350,
-                        }}
-                    >
-                        <ChartTitle text="Current Habit Streaks" />
-                    </Chart>
-                </div> */}
+                    <div className="longest__streaks">
+                        <Card
+                            style={{
+                                borderRadius: "15px",
+                                padding: "5px 10px 20px 10px",
+                            }}
+                        >
+                            <h2 style={{
+                                fontFamily: 'Arvo',
+                                textAlign: 'center',
+                                marginTop: '10px'
+                            }}>Current Habit Streaks</h2>
+                            {
+                                habitsData.map((item, idx) => (
+                                    <>
+                                        <Chart
+                                            key={item.id}
+                                            style={{
+                                                height:120,
+                                            }}
+                                        >
+                                            <ChartTitle text={`${item.habit}`} />
+                                            <ChartSeries>
+                                                <ChartSeriesItem type="bullet" color="#fff" data={[[item.currStreak, 0]]} />
+                                            </ChartSeries>
+                                            <ChartCategoryAxis>
+                                            <ChartCategoryAxisItem
+                                                majorGridLines={hidden}
+                                                minorGridLines={hidden}
+                                            />
+                                            </ChartCategoryAxis>
+                                            <ChartValueAxis>
+                                            <ChartValueAxisItem
+                                                majorGridLines={hidden}
+                                                minorTicks={hidden}
+                                                min={0}
+                                                max={31}
+                                                plotBands={habitPlotBands}
+                                            />
+                                            </ChartValueAxis>
+                                            <ChartTooltip render={tooltipRenderCurrent} />
+                                        </Chart>
+                                    </>
+                                ))
+                            }
+                        </Card>
+                    </div>
+
+                    
+                </div>
             </div>
     );
 }
