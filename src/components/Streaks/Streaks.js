@@ -72,18 +72,29 @@ const Streaks = ({ allLabels }) => {
         return cols;
     };
 
-    const labels = [];
-    if(allLabels.length) {
-        var sel = false;
-        allLabels[0].forEach(function(label, idx) {
-            if(label === "all") {
-                sel = true;
-            } else {
-                sel = false;
-            }
-            labels.push(<PanelBarItem key={idx} title={label} selected={sel}/>);
-        })
-    }
+    const [label, setLabel] = useState('all');
+    const [labels, setLabels] = useState([]);
+    useEffect(() => {
+        const temp_labels = [];
+        if(allLabels.length) {
+            var sel = false;
+            allLabels[0].forEach(function(lab, idx) {
+                if(lab === label) {
+                    sel = true;
+                } else {
+                    sel = false;
+                }
+                temp_labels.push(
+                    <div className="streak__label" style={{ height: "30px", fontFamily: 'Arvo'}} onClick={() => setLabel(lab)}>
+                        <PanelBarItem key={idx} title={lab} selected={sel}/>
+                    </div>
+                );
+            })
+
+            setLabels([...temp_labels]);
+        }
+        console.log(label);
+    }, [label]);
 
     return (
         <>
@@ -110,6 +121,8 @@ const Streaks = ({ allLabels }) => {
                             {
                                 createHabitStreaks(habitsData)
                             }
+
+                            { label }
                         </div>
                     </div>
                 </div>
