@@ -103,6 +103,9 @@ const Streaks = ({ allLabels }) => {
     return (
         <>
             <HabitAppBar userName={appbarDisplay} />
+            <div style={{ opacity: 0.9, left: "20vw", top: "4vh", boxShadow: "-0.1rem 0.15rem 0rem rgba(0, 0, 0, 0.3)", width: "20vw", textAlign: "center", position: "relative", marginTop: "5px", backgroundColor: "white", padding: "10px", borderRadius: "5px"}}>
+                <h2 style={{fontFamily: 'Arvo'}}>7-Day Habit Streaks</h2>
+            </div>
             <div className="streaks__main">
                 <div className="streaks__middle">
                     <div className="title__middle">

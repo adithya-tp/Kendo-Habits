@@ -1,10 +1,10 @@
 import React from 'react';
 import World from './World';
 
-const Garden = () => {
+const Garden = ({ itemPositions }) => {
     return (
         <>
-            <World />
+            <World itemPositions={itemPositions} />
         </>
     );
 }

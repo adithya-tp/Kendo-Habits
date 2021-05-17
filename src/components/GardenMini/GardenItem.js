@@ -1,6 +1,4 @@
 import React from 'react';
-// import { useDrag } from 'react-dnd';
-// import { GardenTypes } from './GardenTypes';
 
 const gardenItemStyle = {
     fontSize: 18,
@@ -10,15 +8,7 @@ const gardenItemStyle = {
 
 const GardenItem = () => {
 
-    // const [{ isDragging }, drag ] = useDrag(() => ({
-    //     type: GardenTypes.TREE,
-    //     collect: (monitor) => ({
-    //         isDragging: !!monitor.isDragging()
-    //     })
-    // }))
-
     return (
-        // ref={drag}
         <div style={{...gardenItemStyle}}>🟢</div>
     );
 }

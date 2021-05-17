@@ -29,10 +29,14 @@
 }
 
 .title__middle-habit {
+    position: relative;
+    bottom: 5vh;
     margin-left: 50px;
 }
 
 .title__middle-date {
+    position: relative;
+    bottom: 5vh;
     margin-left: -10px;
 }
 

@@ -10,7 +10,7 @@ const Tile = ({ src, x, y, z, ybase }) => {
                                                     src={land_both}
                                                     className="tile"
                                                     style={{left: `${x}%`, top: `${ybase}%`, zIndex: z}}
-                                                />) : (<div></div>);
+                                                />) : (null);
     return (
         <>
             {
