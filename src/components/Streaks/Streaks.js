@@ -14,6 +14,9 @@ const Streaks = ({ allLabels }) => {
     const [habitsData, setHabitsData] = useState([]);
     const history = useHistory();
 
+    const today = new Date(Date.now());
+    const [currDate, setCurrDate] = useState(today);
+
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged((authUser) => {
             if(authUser) {
@@ -61,8 +64,8 @@ const Streaks = ({ allLabels }) => {
                 cols.push(
                     <div  
                         key={i}
-                        onMouseOver={() => setHoverHabit(data[Math.floor(i / div)].habit)}
-                        onMouseOut={() => setHoverHabit('Hover to see habit name')}
+                        onMouseOver={() => {setHoverHabit(data[Math.floor(i / div)].habit); var d = new Date(); setCurrDate(new Date(d.setDate(today.getDate() - (6 - Math.floor(i % div))) ) )}}
+                        onMouseOut={() => {setHoverHabit('Hover to see habit name'); setCurrDate(today)}}
                     >
                         <StreakTile h={Math.max(10, 100 - 2 * div)} w={Math.max(10, 100 - 2 * div)} key={i} color={clr} />
                     </div>
@@ -106,7 +109,7 @@ const Streaks = ({ allLabels }) => {
                             <h2 style={{borderBottom: "1px solid black"}}>{hoverHabit}</h2>
                         </div>
                         <div className="title__middle-date">
-                            <h2>Date: May 1, 2020</h2>
+                            <h2>Date: {currDate.toLocaleDateString()}</h2>
                         </div>
                     </div>
                     <div className="habits__middle">
