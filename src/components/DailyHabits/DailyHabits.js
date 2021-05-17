@@ -58,7 +58,7 @@ const DailyHabits = () => {
                             doc => doc.data().labels
                         )]
                     );
-                })
+                });
 
                 console.log(allLabels);
             } else {

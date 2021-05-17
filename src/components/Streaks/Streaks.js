@@ -6,7 +6,7 @@ import HabitAppBar from '../HabitAppBar/HabitAppBar';
 import { auth, db } from '../../firebase';
 import { useHistory } from 'react-router';
 
-const Streaks = () => {
+const Streaks = ({ allLabels }) => {
 
     const [appbarDisplay, setAppbarDisplay] = useState('');
     const [currentUser, setCurrentUser] = useState();
@@ -72,6 +72,19 @@ const Streaks = () => {
         return cols;
     };
 
+    const labels = [];
+    if(allLabels.length) {
+        var sel = false;
+        allLabels[0].forEach(function(label, idx) {
+            if(label === "all") {
+                sel = true;
+            } else {
+                sel = false;
+            }
+            labels.push(<PanelBarItem key={idx} title={label} selected={sel}/>);
+        })
+    }
+
     return (
         <>
             <HabitAppBar userName={appbarDisplay} />
@@ -104,11 +117,9 @@ const Streaks = () => {
                     <div className="habits__panelbar">
                         <PanelBar>
                             <PanelBarItem expanded={true} title="Habit Categories">
-                                <PanelBarItem selected={true} title={'All'} />
-                                <PanelBarItem title={'Sports'} />
-                                <PanelBarItem title={'Mental Health'} />
-                                <PanelBarItem title={'Work'} />
-                                <PanelBarItem title={'Coding'} />
+                                {
+                                    labels
+                                }
                             </PanelBarItem>
                         </PanelBar>
                     </div>
