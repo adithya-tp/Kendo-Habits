@@ -12,15 +12,29 @@ import { AuthProvider } from './contexts/AuthContext';
 import './App.css';
 import SideBar from './components/SideBar/SideBar';
 import VizPage from './components/VizPage/VizPage';
+import { useEffect, useState } from 'react';
+import { db } from './firebase';
 
 function App() {
   const location = useLocation();
+  const [allLabels, setAllLabels] = useState([]);
   const homeVariants = {
     exit: {
       y: "-100vh",
       transition: {ease: 'easeInOut'}
     }
   }
+
+  useEffect(() => {
+    db.collection('allLabels')
+      .onSnapshot(snapshot => {
+          setAllLabels(
+              [...snapshot.docs.map(
+                  doc => doc.data().labels
+              )]
+          );
+      })
+  }, []);
 
   return (
     <AuthProvider>
@@ -36,7 +50,7 @@ function App() {
               <Route exact path="/register" component={Register} />
               <SideBar>
                 <Route exact path="/user" component={DailyHabits} />
-                <Route exact path="/habit-streak" component={Streaks} />
+                <Route exact path="/habit-streak" component={() => <Streaks allLabels={allLabels} />} />
                 <Route exact path="/visualizations" component={VizPage} />
                 <Route exact path="/garden" component={GardenPage} />
               </SideBar>
