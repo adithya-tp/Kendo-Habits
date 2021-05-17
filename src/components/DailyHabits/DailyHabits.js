@@ -182,7 +182,7 @@ const DailyHabits = () => {
                                     setExpandMe(!expandMe);
                                 }}
                             >
-                                <HabitCard key={habit.id} title={habit.habit} bgc={habit.habitHistory[habit.habitHistory.length - 1] ? "#00ff00" : "#ffffff"} />
+                                <HabitCard key={habit.id} title={habit.habit} bgc={habit.habitHistory[habit.habitHistory.length - 1] ? "#00ff00" : "#ffffff"} lab={habit.habitLabels} />
                             </div>
                             <motion.div onClick={() => deleteHabitWrapper(habit)} className="delete__icon" whileHover={{ scale: 1.1 }} className="habit__card-delete" style={{ backgroundColor:"#c5221d", width: "20px", borderRadius: "5px", textAlign: "center", padding: "5px 10px 5px 10px"}}>
                                 <span style={{ color: "white", cursor: "pointer"}} className="k-icon k-i-delete"></span>

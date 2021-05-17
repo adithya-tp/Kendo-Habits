@@ -1,5 +1,5 @@
 .habit__card {
-    border-radius: 0 0.5rem 0.5rem 0.5rem;
+    border-radius: 20px;
     counter-increment: gradient-counter;
     min-height: 3rem;
     width: 500px;
