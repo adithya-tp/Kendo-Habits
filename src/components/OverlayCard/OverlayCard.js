@@ -41,7 +41,7 @@ const FormTextArea = fieldRenderProps => {
     );
 };
 
-const OverlayCard = ({ user, habit, toggleExpand }) => {
+const OverlayCard = ({ user, habit, toggleExpand, allLabels }) => {
     const [value, setValue] = useState([...habit.habitLabels]);
     const [description, setDescription] = useState([]);
     const [checked, setChecked] = useState(habit.habitHistory[habit.habitHistory.length - 1]);
@@ -99,7 +99,7 @@ const OverlayCard = ({ user, habit, toggleExpand }) => {
 
     return (
         <Dialog className="overlay__card" title={habit.habit} onClose={() => toggleExpand(false)}>
-            <div className="overlay__card-textarea">
+            <div onDoubleClick={() => toggleExpand(false)} className="overlay__card-textarea">
                 <Form
                     initialValues={{habitTextarea: habit.habitDescription}}
                     render={formRenderProps => <FormElement style={{
@@ -119,7 +119,7 @@ const OverlayCard = ({ user, habit, toggleExpand }) => {
             </div>
 
             <div className="multiselect__area">
-                <MultiSelect data={habit.habitLabels} onChange={handleChange} value={value} />
+                <MultiSelect data={allLabels} onChange={handleChange} value={value} />
             </div>
             
 

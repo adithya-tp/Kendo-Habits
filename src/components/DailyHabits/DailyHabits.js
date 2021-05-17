@@ -24,6 +24,7 @@ const DailyHabits = () => {
     const [input, setInput] = useState('');
     const [currentHabit, setCurrentHabit] = useState();
     const [premium, setPremium] = useState(false);
+    const [allLabels, setAllLabels] = useState([]);
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged((authUser) => {
@@ -49,11 +50,22 @@ const DailyHabits = () => {
                         )
                     )
                 });
+
+                db.collection('allLabels')
+                .onSnapshot(snapshot => {
+                    setAllLabels(
+                        [...snapshot.docs.map(
+                            doc => doc.data().labels
+                        )]
+                    );
+                })
+
+                console.log(allLabels);
             } else {
                 history.push('/');
             }
         });
-        console.log("useeffect log: ", habits);
+        // console.log("useeffect log: ", habits);
         return unsubscribe;
     }, []);
 
@@ -166,7 +178,7 @@ const DailyHabits = () => {
                             <div
                                 onClick={(e) => {
                                     setHabitOverlay(habit);
-                                    console.log("habit overlay: ", habitOverlay);
+                                    // console.log("habit overlay: ", habitOverlay);
                                     setExpandMe(!expandMe);
                                 }}
                             >
@@ -182,7 +194,7 @@ const DailyHabits = () => {
             {
                 expandMe && 
                 (
-                    <OverlayCard user={currentUser} habit={habitOverlay} toggleExpand={setExpandMe} />
+                    <OverlayCard user={currentUser} habit={habitOverlay} toggleExpand={setExpandMe} allLabels={allLabels[0]}/>
                 )
             }
             {
