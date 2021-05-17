@@ -99,6 +99,7 @@ const Streaks = ({ allLabels }) => {
         console.log(label);
     }, [label]);
 
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     return (
         <>
             <HabitAppBar userName={appbarDisplay} />
@@ -109,7 +110,7 @@ const Streaks = ({ allLabels }) => {
                             <h2 style={{borderBottom: "1px solid black"}}>{hoverHabit}</h2>
                         </div>
                         <div className="title__middle-date">
-                            <h2>Date: {currDate.toLocaleDateString()}</h2>
+                            <h2>Date: {currDate.toLocaleDateString(undefined, options)}</h2>
                         </div>
                     </div>
                     <div className="habits__middle">
