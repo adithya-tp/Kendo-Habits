@@ -32,7 +32,7 @@ const GardenMini = () => {
                         hasItem[temp__coordinates[0] * 10 + temp__coordinates[1]] = [coordinate[0], true];
                     });
 
-                    console.log("mini pos: ", temp_cloud);
+                    // console.log("mini pos: ", temp_cloud);
                 });
             } else {
                 history.push('/');

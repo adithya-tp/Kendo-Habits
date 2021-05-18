@@ -12,6 +12,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 import { motion } from 'framer-motion';
+import { db } from '../../firebase';
 
 const RegisterModal = () => {
 
@@ -32,6 +33,14 @@ const RegisterModal = () => {
                 user.updateProfile({
                     displayName: name
                 });
+
+                var true_points = [{'idx' : ["tree_one", 0, 0]}];
+                db.collection('gardens')
+                .doc(user.uid)
+                .set({
+                    coordinates: true_points,
+                })
+
                 history.push("/user");
             })
             .catch((error) => {
