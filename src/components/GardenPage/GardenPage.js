@@ -22,7 +22,6 @@ const GardenPage = () => {
                     var temp_cloud = []
                     snapshot.data().coordinates.map((coordinate) => {
                         temp_cloud.push([coordinate.idx[0], coordinate.idx[1], coordinate.idx[2]]);
-                        // setCloudCoordinates([...cloudCoordinates, [coordinate.idx[0], coordinate.idx[1], coordinate.idx[2]]])
                     });
                     setCloudCoordinates(temp_cloud);
                 });
@@ -30,7 +29,6 @@ const GardenPage = () => {
                 history.push('/');
             }
         });
-        // console.log(cloudCoordinates);
         return unsubscribe;
     }, [currentUser]);
 
@@ -40,8 +38,7 @@ const GardenPage = () => {
             <Garden itemPositions={cloudCoordinates} />
             <div className="mini__garden">
                 {/* fetch x, y, and garden_item_type from firebase */}
-                {/* <GardenMini itemPositions={[['tree_one', 0, 0], ['tree_four', 4, 0], ['tree_two', 1, 4], ['tree_two', 8, 1], ['tree_three', 5, 4]]} /> */}
-                <GardenMini itemPositions={cloudCoordinates} />
+                <GardenMini />
             </div>
         </div>
     );

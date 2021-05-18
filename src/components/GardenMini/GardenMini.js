@@ -6,7 +6,7 @@ import { auth, db } from '../../firebase';
 import { useHistory } from 'react-router';
 
 
-const GardenMini = ({ itemPositions }) => {
+const GardenMini = () => {
     
     const [squares, setSquares] = useState([]);
     const [lastCoord, setLastCoord] = useState([]);
@@ -14,29 +14,35 @@ const GardenMini = ({ itemPositions }) => {
     const [hasItem, setHasItem] = useState(new Array(100).fill(['empty', false]));
     const [currentUser, setCurrentUser] = useState();
     const history = useHistory();
-    // console.log("cloud pos: ", itemPositions);
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged((authUser) => {
             if(authUser) {
                 setCurrentUser(authUser);
+
+                db.collection('gardens')
+                .doc(authUser.uid)
+                .onSnapshot((snapshot) => {
+                    var temp_cloud = []
+                    snapshot.data().coordinates.map((coordinate) => {
+                        temp_cloud.push([coordinate.idx[0], coordinate.idx[1], coordinate.idx[2]]);
+                    });
+
+                    temp_cloud.forEach((coordinate) => {
+                        var temp__coordinates = [coordinate[2], 9 - coordinate[1]];
+                        hasItem[temp__coordinates[0] * 10 + temp__coordinates[1]] = [coordinate[0], true];
+                    });
+
+                    console.log("mini pos: ", temp_cloud);
+                });
             } else {
                 history.push('/');
             }
         });
         return unsubscribe;
-    }, []);
-
-    // for initial render of item positions
-    useEffect(() => {
-        itemPositions.forEach((coordinate) => {
-            var temp__coordinates = [coordinate[2], 9 - coordinate[1]];
-            hasItem[temp__coordinates[0] * 10 + temp__coordinates[1]] = [coordinate[0], true];
-        });
-    }, [itemPositions]);
+    }, [hasItem]);
 
     // for subsequent render of item positions
     useEffect(() => {
-        // console.log("Has item changed", hasItem);
         let tempSquares = [];
         for(let x = 0; x < 10; x++) {
             for(let y = 0; y < 10; y++) {
