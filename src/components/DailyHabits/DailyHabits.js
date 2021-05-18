@@ -3,6 +3,7 @@ import { Button } from '@progress/kendo-react-buttons';
 import { Hint } from '@progress/kendo-react-labels';
 import { Dialog } from '@progress/kendo-react-dialogs';
 import { firstDayOfMonth, lastDayOfMonth } from '@progress/kendo-date-math';
+import { CircularGauge } from "@progress/kendo-react-gauges";
 
 
 import React, { useEffect, useState } from 'react';
@@ -156,72 +157,130 @@ const DailyHabits = () => {
     const [habitOverlay, setHabitOverlay] = useState();
     const [wantDelete, setWantDelete] = useState(false);
 
-    return (
-        <div className="habits_container">
-            <HabitAppBar userName={appbarDisplay} />
-            <h1> Your daily habits...</h1>
-            <ol className="habit__list">
-                <div className="daily__habits-input">
-                    <div className="input__hint">
-                        <Input maxLength={50} value={input} onChange={(e) => setInput(e.target.value)} />
-                        <Hint direction="start">{!input && "Add a new habit"}</Hint>
-                    </div>
-                    <Button disabled={!input.length} onClick={addHabit}>Add Habit</Button>
-                </div>
+    const linearOptions = {
+        value: 10,
+        pointer: [
+            {
+                value: 10,
+                color: "#3963ed",
+                shape: "arrow",
+            },
+        ],
+
+        shape: "arrow",
+        scale: {
+            minorUnit: 1,
+            majorUnit: 5,
+            min: 0,
+            max: 50,
+            ranges: [
                 {
-                    habits.map((habit) => (
-                        <div
-                            key={habit.id}
-                            className="daily__habit-wrapper"
-                        >
-                            <div
-                                onClick={(e) => {
-                                    setHabitOverlay(habit);
-                                    // console.log("habit overlay: ", habitOverlay);
-                                    setExpandMe(!expandMe);
-                                }}
-                            >
-                                <HabitCard key={habit.id} title={habit.habit} bgc={habit.habitHistory[habit.habitHistory.length - 1] ? "#00ff00" : "#ffffff"} lab={habit.habitLabels} />
-                            </div>
-                            <motion.div onClick={() => deleteHabitWrapper(habit)} className="delete__icon" whileHover={{ scale: 1.1 }} className="habit__card-delete" style={{ backgroundColor:"#c5221d", width: "20px", borderRadius: "5px", textAlign: "center", padding: "5px 10px 5px 10px"}}>
-                                <span style={{ color: "white", cursor: "pointer"}} className="k-icon k-i-delete"></span>
-                            </motion.div>
-                        </div>                        
-                    ))
-                }
-            </ol>
-            {
-                expandMe && 
-                (
-                    <OverlayCard user={currentUser} habit={habitOverlay} toggleExpand={setExpandMe} allLabels={allLabels[0]}/>
-                )
-            }
-            {
-                wantDelete &&
-                (
-                    <Dialog title={"Do you want to delete this habit?"} onClose={() => setWantDelete(false)}>
+                    from: 0,
+                    to: 5,
+                    color: "#a4fba6",
+                },
+                {
+                    from: 5,
+                    to: 15,
+                    color: "#4ae54a",
+                },
+                {
+                    from: 15,
+                    to: 30,
+                    color: "#30cb00",
+                },
+                {
+                    from: 30,
+                    to: 50,
+                    color: "#006203",
+                },
+            ],
+        },
+    };
 
-                        <div style={{ marginBottom: "20px" }} className="delete__habit-buttons">
-                            <Button className="delete__habit-del" onClick={() => deleteHabit(currentHabit)}>Yes, Delete</Button>
-                            <Button className="delete__habit-cancel" onClick={() => setWantDelete(false)}>Cancel</Button>
+    const centerRenderer = (currentValue, color) => {
+        return (
+            <h3
+                style={{
+                    color: color,
+                }}
+            >
+                {currentValue} XP
+            </h3>
+        );
+    };
+    return (
+        <div className="habits_container-wrapper" style={{display: 'flex'}}>
+            <div className="habits_container">
+                <HabitAppBar userName={appbarDisplay} />
+                <h1> Your daily habits...</h1>
+                <ol className="habit__list">
+                    <div className="daily__habits-input">
+                        <div className="input__hint">
+                            <Input maxLength={50} value={input} onChange={(e) => setInput(e.target.value)} />
+                            <Hint direction="start">{!input && "Add a new habit"}</Hint>
                         </div>
-                    </Dialog>
-                )
-            }
-
-            {
-                premium &&
-                (
-                    <Dialog title={"Want more habits? Upgrade to premium 🤩!"} onClose={() => setPremium(false)}>
-                    
-                    <div style={{ marginBottom: "20px" }} className="delete__habit-buttons">
-                        <Button style={{ backgroundColor: "#36E46B", borderRadius: "10px" }} onClick={() => setPremium(false)}>Upgrade to Kendo-Pro!</Button>
+                        <Button disabled={!input.length} onClick={addHabit}>Add Habit</Button>
                     </div>
-                    </Dialog>
-                )
-            }
-
-
+                    {
+                        habits.map((habit) => (
+                            <div
+                                key={habit.id}
+                                className="daily__habit-wrapper"
+                            >
+                                <div
+                                    onClick={(e) => {
+                                        setHabitOverlay(habit);
+                                        // console.log("habit overlay: ", habitOverlay);
+                                        setExpandMe(!expandMe);
+                                    }}
+                                >
+                                    <HabitCard key={habit.id} title={habit.habit} bgc={habit.habitHistory[habit.habitHistory.length - 1] ? "#00ff00" : "#ffffff"} lab={habit.habitLabels} />
+                                </div>
+                                <motion.div onClick={() => deleteHabitWrapper(habit)} className="delete__icon" whileHover={{ scale: 1.1 }} className="habit__card-delete" style={{ backgroundColor:"#c5221d", width: "20px", borderRadius: "5px", textAlign: "center", padding: "5px 10px 5px 10px"}}>
+                                    <span style={{ color: "white", cursor: "pointer"}} className="k-icon k-i-delete"></span>
+                                </motion.div>
+                            </div>
+                        ))
+                    }
+                </ol>
+                {
+                    expandMe &&
+                    (
+                        <OverlayCard user={currentUser} habit={habitOverlay} toggleExpand={setExpandMe} allLabels={allLabels[0]}/>
+                    )
+                }
+                {
+                    wantDelete &&
+                    (
+                        <Dialog title={"Do you want to delete this habit?"} onClose={() => setWantDelete(false)}>
+                            <div style={{ marginBottom: "20px" }} className="delete__habit-buttons">
+                                <Button className="delete__habit-del" onClick={() => deleteHabit(currentHabit)}>Yes, Delete</Button>
+                                <Button className="delete__habit-cancel" onClick={() => setWantDelete(false)}>Cancel</Button>
+                            </div>
+                        </Dialog>
+                    )
+                }
+                {
+                    premium &&
+                    (
+                        <Dialog title={"Want more habits? Upgrade to premium 🤩!"} onClose={() => setPremium(false)}>
+            
+                        <div style={{ marginBottom: "20px" }} className="delete__habit-buttons">
+                            <Button style={{ backgroundColor: "#36E46B", borderRadius: "10px" }} onClick={() => setPremium(false)}>Upgrade to Kendo-Pro!</Button>
+                        </div>
+                        </Dialog>
+                    )
+                }
+            </div>
+            <div className="circular__gauge">
+                <h3 style={{ fontFamily: 'Arvo' }}>Level: 1</h3>
+                <CircularGauge
+                    value={30}
+                    style={{display: 'block'}}
+                    centerRender={centerRenderer}
+                />
+            </div>
         </div>
     );
 }

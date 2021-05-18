@@ -78,3 +78,16 @@ ol.habit__list {
     color: white;
     border-radius: 10px;
 }
+
+.circular__gauge {
+    position: fixed;
+    right: 0;
+    align-self: center;
+    margin-right: 5vw;
+    width: 5vw;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: -0.2rem 0.2rem 0.1rem rgba(0, 0, 0, 0.3);
+}

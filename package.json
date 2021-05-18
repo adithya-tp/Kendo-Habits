@@ -18,6 +18,7 @@
     "@progress/kendo-react-dialogs": "^4.5.0",
     "@progress/kendo-react-dropdowns": "^4.6.0",
     "@progress/kendo-react-form": "^4.5.0",
+    "@progress/kendo-react-gauges": "^4.6.0",
     "@progress/kendo-react-grid": "^4.5.0",
     "@progress/kendo-react-inputs": "^4.5.0",
     "@progress/kendo-react-intl": "^4.6.0",
