@@ -12,7 +12,7 @@ import { WORLD_SIZE, TILE_ASPECT_RATIO } from "../../garden/constants";
 import Tile from "./Tile";
 
 const Landscape = ({ itemPositions }) => {
-    console.log(itemPositions);
+    // console.log(itemPositions);
     const tiles = [];
     for (let i = WORLD_SIZE; i > 0; i--) {
         tiles.push(Array(WORLD_SIZE).fill('land_both'));

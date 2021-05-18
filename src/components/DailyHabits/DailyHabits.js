@@ -65,7 +65,6 @@ const DailyHabits = () => {
                 history.push('/');
             }
         });
-        // console.log("useeffect log: ", habits);
         return unsubscribe;
     }, []);
 
