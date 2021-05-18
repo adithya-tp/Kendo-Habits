@@ -28,14 +28,23 @@
 
 .longest__streaks {
     position: relative;
-    max-width: 30vw;
+    min-width: 20vw;
+    max-width: 50vw;
     min-height: 20vh;
-    margin: 20px;
+    margin-top: 20px;
 }
 
 .current__streaks {
     position: relative;
-    max-width: 30vw;
+    min-width: 20vw;
+    max-width: 50vw;
     min-height: 20vh;
-    margin: 20px;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+.column__chart {
+    position: relative;
+    transform: translate(0, -45vh);
+    margin-left: 20px;
 }

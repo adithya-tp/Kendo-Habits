@@ -199,7 +199,7 @@ const VizPage = () => {
                         </Card>
                     </div>
 
-                    <div className="longest__streaks">
+                    <div className="current__streaks">
                         <Card
                             style={{
                                 borderRadius: "15px",
@@ -246,9 +246,49 @@ const VizPage = () => {
                             }
                         </Card>
                     </div>
-
-                    
                 </div>
+
+                <div className="column__chart">
+                        <Card
+                            style={{
+                                padding: "0 10px 20px 10px",
+                                borderRadius: "15px",
+                                width: "30vw",
+                                height: "40vh"
+                            }}
+                        >
+                            <h2 style={{
+                                fontFamily: 'Arvo',
+                                textAlign: 'center',
+                            }}>Habit Comparison</h2>
+                            <Chart>
+                                <ChartLegend position="top" orientation="horizontal" />
+                                <ChartCategoryAxis>
+                                    <ChartCategoryAxisItem categories={months} startAngle={45} />
+                                </ChartCategoryAxis>
+                                <ChartSeries>
+                                    {habitsData.map((item, idx) => (
+                                        <ChartSeriesItem
+                                            key={idx}
+                                            type="column"
+                                            tooltip={{
+                                                visible: true
+                                            }}
+                                            visible={true}
+                                            data={item.habitCounts}
+                                            name={item.habit}
+                                        />
+                                    ))}
+                                </ChartSeries>
+                            </Chart>
+
+                            <h4 style={{
+                                fontFamily: 'Arvo',
+                                textAlign: 'center',
+                                marginTop: '2px'
+                            }}>(Right Click Legends to Toggle)</h4>
+                        </Card>
+                    </div>
             </div>
     );
 }
