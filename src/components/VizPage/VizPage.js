@@ -115,7 +115,7 @@ const VizPage = () => {
                                 padding: "0 10px 20px 10px",
                                 borderRadius: "15px",
                                 width: "30vw",
-                                height: "35vh"
+                                height: "38vh"
                             }}
                         >
                             <h2 style={{
@@ -143,6 +143,12 @@ const VizPage = () => {
                                     ))}
                                 </ChartSeries>
                             </Chart>
+
+                            <h4 style={{
+                                fontFamily: 'Arvo',
+                                textAlign: 'center',
+                                marginTop: '2px'
+                            }}>(Right Click Legends to Toggle)</h4>
                         </Card>
                     </div>
                     <div className="longest__streaks">
