@@ -26,6 +26,8 @@ const DailyHabits = () => {
     const [currentHabit, setCurrentHabit] = useState();
     const [premium, setPremium] = useState(false);
     const [allLabels, setAllLabels] = useState([]);
+    const [currLevel, setCurrLevel] = useState();
+    const [xp, setXp] = useState();
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged((authUser) => {
@@ -59,6 +61,13 @@ const DailyHabits = () => {
                             doc => doc.data().labels
                         )]
                     );
+                });
+
+                db.collection('stats')
+                .doc(authUser.uid)
+                .onSnapshot((snapshot) => {
+                    setCurrLevel(snapshot.data().currLevel)
+                    setXp(snapshot.data().xp)
                 });
 
                 console.log(allLabels);
@@ -157,47 +166,6 @@ const DailyHabits = () => {
     const [habitOverlay, setHabitOverlay] = useState();
     const [wantDelete, setWantDelete] = useState(false);
 
-    const linearOptions = {
-        value: 10,
-        pointer: [
-            {
-                value: 10,
-                color: "#3963ed",
-                shape: "arrow",
-            },
-        ],
-
-        shape: "arrow",
-        scale: {
-            minorUnit: 1,
-            majorUnit: 5,
-            min: 0,
-            max: 50,
-            ranges: [
-                {
-                    from: 0,
-                    to: 5,
-                    color: "#a4fba6",
-                },
-                {
-                    from: 5,
-                    to: 15,
-                    color: "#4ae54a",
-                },
-                {
-                    from: 15,
-                    to: 30,
-                    color: "#30cb00",
-                },
-                {
-                    from: 30,
-                    to: 50,
-                    color: "#006203",
-                },
-            ],
-        },
-    };
-
     const centerRenderer = (currentValue, color) => {
         return (
             <h3
@@ -205,7 +173,7 @@ const DailyHabits = () => {
                     color: color,
                 }}
             >
-                {currentValue} XP
+                {currentValue} <br /> 💰​
             </h3>
         );
     };
@@ -274,9 +242,9 @@ const DailyHabits = () => {
                 }
             </div>
             <div className="circular__gauge">
-                <h3 style={{ fontFamily: 'Arvo' }}>Level: 1</h3>
+                <h3 style={{ fontFamily: 'Arvo' }}>Level: {currLevel}</h3>
                 <CircularGauge
-                    value={30}
+                    value={`${ xp ? xp : 0}`}
                     style={{display: 'block'}}
                     centerRender={centerRenderer}
                 />

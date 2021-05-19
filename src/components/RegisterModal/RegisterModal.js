@@ -41,6 +41,13 @@ const RegisterModal = () => {
                     coordinates: true_points,
                 })
 
+                db.collection('stats')
+                .doc(user.uid)
+                .set({
+                    currLevel: 1,
+                    xp: 0,
+                })
+
                 history.push("/user");
             })
             .catch((error) => {

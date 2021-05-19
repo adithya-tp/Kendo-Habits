@@ -87,7 +87,7 @@ ol.habit__list {
     margin-right: 5vw;
     width: 5vw;
     background-color: white;
-    padding: 10px;
+    padding: 10px 10px 20px 10px;
     border-radius: 10px;
     text-align: center;
     box-shadow: -0.2rem 0.2rem 0.1rem rgba(0, 0, 0, 0.3);
