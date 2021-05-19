@@ -215,7 +215,7 @@ const DailyHabits = () => {
                 {
                     expandMe &&
                     (
-                        <OverlayCard user={currentUser} habit={habitOverlay} toggleExpand={setExpandMe} allLabels={allLabels[0]}/>
+                        <OverlayCard user={currentUser} habit={habitOverlay} toggleExpand={setExpandMe} allLabels={allLabels[0]} stats={[currLevel, xp]} />
                     )
                 }
                 {

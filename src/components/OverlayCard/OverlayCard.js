@@ -41,7 +41,7 @@ const FormTextArea = fieldRenderProps => {
     );
 };
 
-const OverlayCard = ({ user, habit, toggleExpand, allLabels }) => {
+const OverlayCard = ({ user, habit, toggleExpand, allLabels, stats }) => {
     const [value, setValue] = useState([...habit.habitLabels]);
     const [description, setDescription] = useState([]);
     const [checked, setChecked] = useState(habit.habitHistory[habit.habitHistory.length - 1]);
@@ -75,6 +75,18 @@ const OverlayCard = ({ user, habit, toggleExpand, allLabels }) => {
         .update({
             habitHistory: habit.habitHistory,
             habitCounts: habit.habitCounts,
+        })
+
+        var [currLevel, xp] = stats;
+        var new_xp = (xp + 5) % 100;
+        if(new_xp < xp) {
+            currLevel++;
+        }
+        db.collection('stats')
+        .doc(user.uid)
+        .update({
+            currLevel: currLevel,
+            xp: new_xp,
         })
     }
 

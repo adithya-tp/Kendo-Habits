@@ -73,7 +73,7 @@ const Streaks = ({ allLabels }) => {
                         }
                     }
                     if(isPart) {
-                        clr = data[Math.floor(i / div)].streak[i % div] ? "#000000" : "#e0e0e0";
+                        clr = data[Math.floor(i / div)].streak[i % div] ? "#231123": "#e0e0e0";
                     } else {
                         clr = data[Math.floor(i / div)].streak[i % div] ? data[Math.floor(i / div)].col : "#e0e0e0";
                     }
