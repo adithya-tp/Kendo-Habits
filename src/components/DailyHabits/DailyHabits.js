@@ -22,7 +22,7 @@ const DailyHabits = () => {
     const [currentUser, setCurrentUser] = useState();
     const [appbarDisplay, setAppbarDisplay] = useState('');
     const history = useHistory();
-    const [habits, setHabits] = useState([]);
+    const [habits, setHabits] = useState();
     const [input, setInput] = useState('');
     const [currentHabit, setCurrentHabit] = useState();
     const [premium, setPremium] = useState(false);
@@ -181,9 +181,8 @@ const DailyHabits = () => {
 
 
     function SkeletonOrHabits(props) {
-        const isLoading = props.habits_length == 0 ? true : false;
         // console.log(isLoading);
-        if(isLoading) {
+        if(!habits) {
             var skeleton_divs = [];
             for(let i = 0; i < 5; i++) {
                 skeleton_divs.push(
@@ -253,7 +252,7 @@ const DailyHabits = () => {
                         <Button disabled={!input.length} onClick={addHabit}>Add Habit</Button>
                     </div>
 
-                    <SkeletonOrHabits habits_length={habits.length} />
+                    <SkeletonOrHabits />
                 </ol>
                 {
                     expandMe &&
