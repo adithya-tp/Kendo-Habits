@@ -114,7 +114,7 @@ const Streaks = ({ allLabels }) => {
 
             setLabels([...temp_labels]);
         }
-        console.log(label);
+        // console.log(label);
     }, [label]);
 
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
