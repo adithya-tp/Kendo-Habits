@@ -71,7 +71,7 @@ const DailyHabits = () => {
                     setXp(snapshot.data().xp)
                 });
 
-                console.log(allLabels);
+                // console.log(allLabels);
             } else {
                 history.push('/');
             }
@@ -182,7 +182,7 @@ const DailyHabits = () => {
 
     function SkeletonOrHabits(props) {
         const isLoading = props.habits_length == 0 ? true : false;
-        console.log(isLoading);
+        // console.log(isLoading);
         if(isLoading) {
             var skeleton_divs = [];
             for(let i = 0; i < 5; i++) {
