@@ -24,6 +24,7 @@
     "@progress/kendo-react-intl": "^4.6.0",
     "@progress/kendo-react-labels": "^4.5.0",
     "@progress/kendo-react-layout": "^4.5.0",
+    "@progress/kendo-react-pdf": "^4.6.0",
     "@progress/kendo-react-progressbars": "^4.5.0",
     "@progress/kendo-react-ripple": "^4.5.0",
     "@progress/kendo-react-treeview": "^4.5.0",
