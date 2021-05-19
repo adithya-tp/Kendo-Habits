@@ -4,6 +4,7 @@ import { Hint } from '@progress/kendo-react-labels';
 import { Dialog } from '@progress/kendo-react-dialogs';
 import { firstDayOfMonth, lastDayOfMonth } from '@progress/kendo-date-math';
 import { CircularGauge } from "@progress/kendo-react-gauges";
+import { Skeleton } from "@progress/kendo-react-indicators";
 
 
 import React, { useEffect, useState } from 'react';
@@ -177,6 +178,67 @@ const DailyHabits = () => {
             </h3>
         );
     };
+
+
+    function SkeletonOrHabits(props) {
+        const isLoading = props.habits_length == 0 ? true : false;
+        console.log(isLoading);
+        if(isLoading) {
+            var skeleton_divs = [];
+            for(let i = 0; i < 5; i++) {
+                skeleton_divs.push(
+                    <div style={{display: 'flex'}}>
+                        <div>
+                            <Skeleton
+                                shape="rectangle"
+                                style={{
+                                    marginTop: 20,
+                                    width: 500,
+                                    height: 70,
+                                }}
+                            />
+                        </div>
+                        <div>
+                            <Skeleton
+                                shape="rectangle"
+                                style={{
+                                    
+                                    marginTop: 30,
+                                    marginLeft: 20,
+                                    width: 40,
+                                    height: 40,
+                                }}
+                            />
+                        </div>
+                    </div>
+                )
+            }
+            return skeleton_divs;
+        } else {
+            return (
+                habits.map((habit) => (
+                    <div
+                        key={habit.id}
+                        className="daily__habit-wrapper"
+                    >
+                        <div
+                            onClick={(e) => {
+                                setHabitOverlay(habit);
+                                // console.log("habit overlay: ", habitOverlay);
+                                setExpandMe(!expandMe);
+                            }}
+                        >
+                            <HabitCard key={habit.id} title={habit.habit} bgc={habit.habitHistory[habit.habitHistory.length - 1] ? "#00ff00" : "#ffffff"} lab={habit.habitLabels} />
+                        </div>
+                        <motion.div onClick={() => deleteHabitWrapper(habit)} className="delete__icon" whileHover={{ scale: 1.1 }} className="habit__card-delete" style={{ backgroundColor:"#c5221d", width: "20px", borderRadius: "5px", textAlign: "center", padding: "5px 10px 5px 10px"}}>
+                            <span style={{ color: "white", cursor: "pointer"}} className="k-icon k-i-delete"></span>
+                        </motion.div>
+                    </div>
+                ))
+            )
+        }
+    }
+
     return (
         <div className="habits_container-wrapper" style={{display: 'flex'}}>
             <div className="habits_container">
@@ -190,27 +252,8 @@ const DailyHabits = () => {
                         </div>
                         <Button disabled={!input.length} onClick={addHabit}>Add Habit</Button>
                     </div>
-                    {
-                        habits.map((habit) => (
-                            <div
-                                key={habit.id}
-                                className="daily__habit-wrapper"
-                            >
-                                <div
-                                    onClick={(e) => {
-                                        setHabitOverlay(habit);
-                                        // console.log("habit overlay: ", habitOverlay);
-                                        setExpandMe(!expandMe);
-                                    }}
-                                >
-                                    <HabitCard key={habit.id} title={habit.habit} bgc={habit.habitHistory[habit.habitHistory.length - 1] ? "#00ff00" : "#ffffff"} lab={habit.habitLabels} />
-                                </div>
-                                <motion.div onClick={() => deleteHabitWrapper(habit)} className="delete__icon" whileHover={{ scale: 1.1 }} className="habit__card-delete" style={{ backgroundColor:"#c5221d", width: "20px", borderRadius: "5px", textAlign: "center", padding: "5px 10px 5px 10px"}}>
-                                    <span style={{ color: "white", cursor: "pointer"}} className="k-icon k-i-delete"></span>
-                                </motion.div>
-                            </div>
-                        ))
-                    }
+
+                    <SkeletonOrHabits habits_length={habits.length} />
                 </ol>
                 {
                     expandMe &&
