@@ -82,6 +82,7 @@ ol.habit__list {
 .circular__gauge {
     position: fixed;
     right: 0;
+    height: 200px;
     align-self: center;
     margin-right: 5vw;
     width: 5vw;

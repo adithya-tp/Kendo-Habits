@@ -15,7 +15,6 @@ const GardenPage = () => {
             if(authUser) {
                 setCurrentUser(authUser);
                 
-                // setCloudCoordinates([]);
                 db.collection('gardens')
                 .doc(authUser.uid)
                 .onSnapshot((snapshot) => {

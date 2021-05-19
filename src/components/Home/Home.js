@@ -4,6 +4,9 @@ import { Ripple } from '@progress/kendo-react-ripple';
 import { useHistory } from 'react-router';
 import { motion } from 'framer-motion';
 import './Home.css';
+import { useAuth } from '../../contexts/AuthContext';
+import { useState } from 'react';
+import { Error } from '@progress/kendo-react-labels';
 
 const Home = () => {
     const history = useHistory();
@@ -44,6 +47,20 @@ const Home = () => {
             y: "+100vw",
             transition: { ease: "easeInOut", duration: 1}
         }
+    }
+
+    const [authErrorMessage, setAuthErrorMessage] = useState('');
+    const { login } = useAuth();
+
+    async function handleDemo() {
+        login("test@gmail.com", "test1234")
+        .then((userCredential) => {
+            var user = userCredential.user;
+            history.push("/user");
+        })
+        .catch((error) => {
+            setAuthErrorMessage(error.message);
+        });
     }
 
     return (
@@ -87,14 +104,17 @@ const Home = () => {
                     </motion.div>
                 </div>
                 <motion.div variants={subHeaderVariants} initial="initial" animate="animate" className="auth__buttons">
+                    <Error>
+                        {authErrorMessage}
+                    </Error>
                     {/* Add ripple effect for extra pizzazz */}
                     <Ripple>
+                        <div className="buttons__two">
+                            <Button className="login-with-google" onClick={handleDemo}>Click Here for Demo</Button>
+                        </div>
                         <div className="buttons__one">
                             <Button className="auth-button" primary={true} onClick={showSignInPage}>Sign-In</Button>
                             <Button className="auth-button" primary={true} onClick={showRegisterPage}>Register</Button>
-                        </div>
-                        <div className="buttons__two">
-                            <Button className="login-with-google">Log-in with Google</Button>
                         </div>
                     </Ripple>
                 </motion.div>
