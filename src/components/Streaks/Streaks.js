@@ -40,6 +40,7 @@ const Streaks = ({ allLabels }) => {
                                     id: doc.id,
                                     habit: doc.data().habit,
                                     col: "#" + doc.data().habitCol,
+                                    habitLabels: doc.data().habitLabels,
                                     streak: last_seven
                                 });
                             }
@@ -53,6 +54,8 @@ const Streaks = ({ allLabels }) => {
         return unsubscribe;
     }, []);
 
+    const [label, setLabel] = useState('all');
+    const [labels, setLabels] = useState([]);
     function createHabitStreaks(data) {
         let cols = [];
     
@@ -60,7 +63,24 @@ const Streaks = ({ allLabels }) => {
             let div = data[0].streak.length;
             for(let i = 0; i < data.length * data[0].streak.length; i++) {
                 let clr;
-                clr = data[Math.floor(i / div)].streak[i % div] ? data[Math.floor(i / div)].col : "#e0e0e0";
+                if(label != 'all') {
+                    var labs = [...data[Math.floor(i / div)].habitLabels];
+                    var isPart = false;
+                    for(let h = 0; h < labs.length; h++) {
+                        if(labs[h] == label) {
+                            isPart = true;
+                            break;
+                        }
+                    }
+                    if(isPart) {
+                        clr = data[Math.floor(i / div)].streak[i % div] ? "#000000" : "#e0e0e0";
+                    } else {
+                        clr = data[Math.floor(i / div)].streak[i % div] ? data[Math.floor(i / div)].col : "#e0e0e0";
+                    }
+                } else {
+                    clr = data[Math.floor(i / div)].streak[i % div] ? data[Math.floor(i / div)].col : "#e0e0e0";
+                }
+                
                 cols.push(
                     <div  
                         key={i}
@@ -75,8 +95,6 @@ const Streaks = ({ allLabels }) => {
         return cols;
     };
 
-    const [label, setLabel] = useState('all');
-    const [labels, setLabels] = useState([]);
     useEffect(() => {
         const temp_labels = [];
         if(allLabels.length) {
@@ -88,7 +106,7 @@ const Streaks = ({ allLabels }) => {
                     sel = false;
                 }
                 temp_labels.push(
-                    <div className="streak__label" style={{ height: "30px", fontFamily: 'Arvo'}} onClick={() => setLabel(lab)}>
+                    <div className="streak__label" style={{ height: "30px", fontFamily: 'Arvo'}} onClick={() => {setLabel(lab); createHabitStreaks(habitsData)}}>
                         <PanelBarItem key={idx} title={lab} selected={sel}/>
                     </div>
                 );
