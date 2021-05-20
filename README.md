@@ -10,7 +10,7 @@ Kendo Habits is a gamified Habit Builder built with React, the Kendo React UI Li
  
 "Every action you take is a vote for the type of person you wish to become". 
 
-These quotes from my recent read, "Atomic Habits" by James Clear, really struck a chord with me. It gave me the vision to build a system that helps people Progress (no pun intended, well maybe) towards their ideal self. The vision to build an enjoyable system that celebrates even the smallest wins (a significant win, nonetheless). Kendo Habits was born.
+These quotes from my recent read, "Atomic Habits" by James Clear, really struck a chord with me. It gave me the vision to build a system that helps people progress towards their ideal self. The vision to build an enjoyable system that celebrates even the smallest wins (a significant win, nonetheless). Kendo Habits was born.
 
 ## What it does
 
