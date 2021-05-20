@@ -1,8 +1,13 @@
-# Kendo Habits
+# Kendo Habits | Submitted to Progress Worthy Web App Hackathon 2021
 
 Build great habits, while having fun!
 
 Kendo Habits is a gamified Habit Builder built with React, the Kendo React UI Library and of-course ❤️!
+
+## DEMO Video on YouTube (Click on picture below)
+[![Yt video link](https://raw.githubusercontent.com/adithya-tp/Kendo-Habits/master/assets/01_home_page.png?token=AIW2C5W2XZG4SSYRA5GQBL3AV7YFK)](https://www.youtube.com/watch?v=m8nUsUN6_8Q)
+
+## [Devpost Link](https://devpost.com/software/kendo-habits-sylh2u)
 
 ## Inspiration
 
