@@ -63,11 +63,11 @@ const Streaks = ({ allLabels }) => {
             let div = data[0].streak.length;
             for(let i = 0; i < data.length * data[0].streak.length; i++) {
                 let clr;
-                if(label != 'all') {
+                if(label !== 'all') {
                     var labs = [...data[Math.floor(i / div)].habitLabels];
                     var isPart = false;
                     for(let h = 0; h < labs.length; h++) {
-                        if(labs[h] == label) {
+                        if(labs[h] === label) {
                             isPart = true;
                             break;
                         }
