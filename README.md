@@ -21,15 +21,17 @@ These quotes from my recent read, "Atomic Habits" by James Clear, really struck 
 
 "Kendo Habits" makes habit-building enjoyable, automated, and easy! It gives you both visual and auditory feedback for every habit you complete. Not only do you earn "Kendo XP" 💰 and level up, with all the progress you make, but you also get rewarded with pretty trees to customize your virtual garden with beautiful plants and trees.
 
-![habits-tracker](https://raw.githubusercontent.com/adithya-tp/Kendo-Habits/master/assets/04_daily_habits.png?token=AIW2C5UFL5EYEGP5ZK3YBNLAV7VFY)
+![habits-tracker](assets/04_daily_habits.png)
  
 The beauty of your garden is a direct reflection of all the work you've put into yourself in real life. The more habits you complete, the better your garden starts to look, and before you know it, these new habits have become your new identity! Congratulations!
 
-![virtual garden](https://raw.githubusercontent.com/adithya-tp/Kendo-Habits/master/assets/08_garden_page.png?token=AIW2C5SLTMHHIXA7GTR7WQ3AV7UVG)
+<p align="center">
+  <img width="800" height="400"src="assets/garden_gif.gif" alt="virtual garden gif" />
+</p>
 
 What's more, you get to keep track of your habit streaks, and your true habit patterns with the beautiful UI components and charts from Kendo-React. All you have to do is focus on checking off that habit and we'll automate the rest! Gone are the days of misplacing books, or loose sheets of paper where you meticulously kept track of your habits. Kendo Habits to the rescue!
 
-![habit charts](https://raw.githubusercontent.com/adithya-tp/Kendo-Habits/master/assets/09_habits_viz.png?token=AIW2C5TXW4CHOEGRLTJLHXLAV7U2U)
+![habit charts](assets/09_habits_viz.png)
 
 ## How I built it
 
@@ -45,7 +47,7 @@ The virtual garden in particular was very challenging. Giving the user a way to 
 
 Real-time updates with firebase for almost everything you do in Kendo Habits, is something I'm really happy about. Working out math with dates in order to update the Kendo React charts was also a great learning opportunity. This process of handling math with dates was definitely alleviated by the "Date Math" functions that come with KendoReact.
 
-![habit streaks](https://raw.githubusercontent.com/adithya-tp/Kendo-Habits/master/assets/06_habit_streaks_page.png?token=AIW2C5W5YXVQ52JGX6QKMXLAV7WFM)
+![habit streaks](assets/06_habit_streaks_page.png)
 
 Getting the virtual garden to work was a truly rewarding experience. I definitely had to get my creative juices flowing to come up with the idea of using a mini-version of the garden to control any tree in the bigger, more visually appealing garden. And finally, I'm really happy with the end result of actually drawing the different trees and garden tiles (or assets) by myself in Inkscape.
 
