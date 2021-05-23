@@ -33,6 +33,10 @@ What's more, you get to keep track of your habit streaks, and your true habit pa
 
 ![habit charts](assets/09_habits_viz.png)
 
+## How is Kendo-Habits contributing to a good cause?
+
+Change starts with the individual. The individual wants to succeed. The individual wants to make their mark on the world! And it all starts with a habit - perhaps even a trivial one. The thing about habits is that it has this [snowball effect](https://greatergood.berkeley.edu/article/item/the_snowball_effect_practice_one_happiness_habit_and_the_others_will_follow) - you improve other areas of your life - you start becoming the person you want to be. Now that person could be an amazing teacher, doctor, or perhaps even the Chief Officer of an NGO, touching the lives of thousands of people positively. Kendo-Habits helps people achieve their true potential, and produce more of such people. The secret to success is not an infinite well of willpower - it is small consistent habits done for so long, that it becomes your identity.
+
 ## How I built it
 
 The entire app was built with React, powered by Kendo React components on the front-end, and Firebase in the backend for real-time updates of your habits.
