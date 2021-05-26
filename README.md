@@ -37,6 +37,22 @@ What's more, you get to keep track of your habit streaks, and your true habit pa
 
 Change starts with the individual. The individual wants to succeed. The individual wants to make their mark on the world! And it all starts with a habit - perhaps even a trivial one. The thing about habits is that it has this [snowball effect](https://greatergood.berkeley.edu/article/item/the_snowball_effect_practice_one_happiness_habit_and_the_others_will_follow) - you improve other areas of your life - you start becoming the person you want to be. Now that person could be an amazing teacher, doctor, or perhaps even the Chief Officer of an NGO, touching the lives of thousands of people positively. Kendo-Habits helps people achieve their true potential, and produce more of such people. The secret to success is not an infinite well of willpower - it is small consistent habits done for so long, that it becomes your identity.
 
+## Testing Instructions
+1. Navigate to the [website](https://www.kendo-habits.web.app)
+2. Choose the "Click here for demo" button for ease of access (of-course registering for an account is also an option. alternatively you may also access sign in with the following credentials: username=test@gmail.com, password=test1234)
+3. Here's a few things you could try out:
+    1. Add a new habit.
+    2. Customize its description and change labels.
+    3. Check out the habit streaks page to see if you're habit got added (notice today's "square" is grey in color).
+    4. Highlight habits by labels using the sidepanel to the right.
+    5. Turn up your speakers to hear the encouraging sound when you completed the habit you just added (Also notice you've gained some Kendo XP on the right).
+    6. Try deleting the habit you just created.
+    7. Check out the virtual garden and click on the bottom right grid (in the top-right corner, or any cell with a tree in it).
+    8. Move trees around and personalize the garden!
+    9. Realize it's been 15 minutes, because moving trees around is so much fun!
+    10. Check out your habit statistics in the habit patterns page.
+    11. Perhaps even download the chart as a pdf!
+
 ## How I built it
 
 The entire app was built with React, powered by Kendo React components on the front-end, and Firebase in the backend for real-time updates of your habits.
