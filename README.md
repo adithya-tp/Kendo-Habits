@@ -43,7 +43,7 @@ Change starts with the individual. The individual wants to succeed. The individu
 3. Here's a few things you could try out:
     1. Add a new habit.
     2. Customize its description and change labels.
-    3. Check out the habit streaks page to see if you're habit got added (notice today's "square" is grey in color).
+    3. Check out the habit streaks page to see if your habit got added (notice today's "square" is grey in color).
     4. Highlight habits by labels using the sidepanel to the right.
     5. Turn up your speakers to hear the encouraging sound when you completed the habit you just added (Also notice you've gained some Kendo XP on the right).
     6. Try deleting the habit you just created.
